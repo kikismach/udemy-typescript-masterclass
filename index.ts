@@ -8,3 +8,8 @@ const students = [
     score: 90,
   },
 ];
+
+for (const student of students) {
+  console.log("Name:", student.name);
+  console.log("Name:", student.grade);
+}
