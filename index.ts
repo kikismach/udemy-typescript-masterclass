@@ -1,15 +1,7 @@
-const students = [
-  {
-    name: "John",
-    score: 70,
-  },
-  {
-    name: "Mark",
-    score: 90,
-  },
-];
-
-for (const student of students) {
-  console.log("Name:", student.name);
-  console.log("Name:", student.grade);
+// Function to add two number
+function addNumbers(a: number, b: number) {
+  return a + b;
 }
+
+console.log(addNumbers(2, 3));
+console.log(addNumbers("text", 3));
