@@ -1,0 +1,16 @@
+{
+  "name": "typescript-masterclass",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "npx tsc index.ts -w"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^5.5.3"
+  }
+}
