@@ -1,20 +1,24 @@
-// primitive types that reflect the absence of a value
-// Undefined values
-var user;
-console.log(user);
-// null values
-var userRole;
-// Using user role before defining it throws an error with TS
-//! console.log(userRole);
-// Hence define it first
-userRole = null;
-console.log(userRole);
-// null and undefined are not the same
-console.log(userRole === user);
-// Even though used interchangebly by JS developers in conditions
-if (!userRole) {
-    console.log("The condition is true");
-}
-if (!user) {
-    console.log("The condition is true");
-}
+/**
+ * BigInt type newly introduced in ES2020, not available below that
+ */
+var bigInt1 = BigInt(945845);
+var bigInt2 = 123564564n;
+// BigInt constructor also create bigint in a similar way 
+console.log(bigInt1);
+// Maximum integer possible with JavaScript before BigInt
+var safeInt = Number.MAX_SAFE_INTEGER;
+console.log(safeInt);
+// Adding values to the maximum integer does not change the number
+var safeIntPlusOne = safeInt + 1;
+var safeIntPlusTwo = safeInt + 2;
+console.log(safeIntPlusOne);
+console.log(safeIntPlusTwo);
+// They would still be the same even after adding number
+console.log(safeIntPlusOne === safeIntPlusTwo);
+// Expression that evali
+var c = bigInt1 - bigInt1;
+// Cannot use a floating point value for creating a bigint
+// TS warns you if you try to create BigInt with wrong types
+var e = 24551.2n;
+// Type checks for methods which only require number as an arguement
+var f = Math.log(bigInt1);
