@@ -1,20 +1,10 @@
-let id: symbol = Symbol(1234);
-let alphabeticId: symbol = Symbol("id");
-
-let user = {
-  [id]: "12344",
-  [alphabeticId]: "uniqueId",
-  name: "Mark",
-  getId() {
-    return this[id];
-  },
-};
-
-// Symbols are  private
-console.log(user.name);
-// will throw a typescript error with id not accessible
-// Throws error because the key here is not 'id' but a symbol generated with 1234 who's value is unknown but guaranteed to be unique
-//! console.log(user.id);
-
-// The id property does exist add the getId method to the object
-console.log(user.getId());
+/**
+ * Assign the correct types to each of the following variables
+ */
+let message = "Hello, TypeScript!";
+let age = 42;
+let isStudent = true;
+let fetched = null;
+let user = undefined;
+let largeNumber = 9007199254740991n;
+let unique = Symbol("uniqueSymbol");
