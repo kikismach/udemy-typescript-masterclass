@@ -1,24 +1,18 @@
-/**
- * BigInt type newly introduced in ES2020, not available below that
- */
-var bigInt1 = BigInt(945845);
-var bigInt2 = 123564564n;
-// BigInt constructor also create bigint in a similar way 
-console.log(bigInt1);
-// Maximum integer possible with JavaScript before BigInt
-var safeInt = Number.MAX_SAFE_INTEGER;
-console.log(safeInt);
-// Adding values to the maximum integer does not change the number
-var safeIntPlusOne = safeInt + 1;
-var safeIntPlusTwo = safeInt + 2;
-console.log(safeIntPlusOne);
-console.log(safeIntPlusTwo);
-// They would still be the same even after adding number
-console.log(safeIntPlusOne === safeIntPlusTwo);
-// Expression that evali
-var c = bigInt1 - bigInt1;
-// Cannot use a floating point value for creating a bigint
-// TS warns you if you try to create BigInt with wrong types
-var e = 24551.2n;
-// Type checks for methods which only require number as an arguement
-var f = Math.log(bigInt1);
+"use strict";
+let id = Symbol(1234);
+let alphabeticId = Symbol("id");
+let user = {
+    [id]: "12344",
+    [alphabeticId]: "uniqueId",
+    name: "Mark",
+    getId() {
+        return this[id];
+    },
+};
+// Symbols are  private
+console.log(user.name);
+// will throw a typescript error with id not accessible
+// Throws error because the key here is not 'id' but a symbol generated with 1234 who's value is unknown but guaranteed to be unique
+//! console.log(user.id);
+// The id property does exist add the getId method to the object
+console.log(user.getId());
