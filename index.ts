@@ -1,24 +1,29 @@
-let city = "New York"; // string
-let population = 8400000; // number
-const age = 32; // litral 32
-let oldAge = 79 as const; // litral 79
-let newAge = oldAge; // litral 79
-let data = new Map(); // Map<any, any>
-let score = [90, 86, 100]; // number []
-type Primitive = string | number | boolean; //  string | number | boolean
-type CustomName = "John" extends string ? string : "John"; // string
-type CustomAge = typeof newAge extends number ? 79 : number; // 79
-type CheckData = typeof data extends Object ? true : false; // true
-type CheckScore = typeof score extends never ? {} : []; // []
+let person = {
+  name: "Mark",
+  age: 32,
+};
 
-/**
- * Are the following statements valid
- * Check if below lines of code are valid as per TypeScript or not without uncommenting them
- *  */
+// Car is any object without a shape or defined properties
+let car: Object = {
+  brand: "BMW",
+  color: "black",
+};
 
-age = 85; // @Error age is a const and connot be re-assigned
-score.push(10); // This is valid as score is an array of numbers
-score.push("New Score"); // @Errro Score is an array of number and can only have numbers
-let customAge: CustomAge = 50; // @Error custom age has a literal value of 79
-let primitive: Primitive = new Date(); // @Error data is not a part of the union
-let years: CheckScore = []; // Valid is years is a litral empty array
+// The problem using teh Object type, its a super type and Arrays are also objects
+let score: Object = [];
+
+// If you see just because car is a Object I can re-assign it as an array
+// ! This is a problem
+car = [21, 32, 48];
+
+// Defining an object with the litral syntax
+let newCar: {} = {
+  brand: "BMW",
+  color: "black",
+};
+
+// The problem with usign the litral object {} is that now properties are not defined and can vary
+// This can lead to errors in the application
+newCar = {
+  brand: "BMW",
+};
