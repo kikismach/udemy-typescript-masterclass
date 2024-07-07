@@ -1,30 +1,65 @@
-type Dog = {
+// One of having nested objects
+// type Post = {
+//   title: string; // Type Annotations using semi-colons instead of commas
+//   content: string;
+//   date: Date;
+//   author: {
+//     name: string;
+//     age: number;
+//     email: string;
+//   };
+// };
+
+// Better to declare a separate type for Author
+type Author = {
   name: string;
-  barks: boolean;
-  wags: boolean;
+  age: number;
+  email: string;
 };
 
-type Cat = {
+// Declare a new type for Awards
+// Initial declaration
+// type Awards = {
+//   [keyof: string]: {
+//     name: string;
+//     date: Date;
+//   };
+// };
+
+type AwardDetails = {
   name: string;
-  purrs: boolean;
+  date: Date;
 };
 
-type DogAndCatUnion = Dog | Cat;
-
-let dog: DogAndCatUnion = {
-  name: "Buddy",
-  barks: true,
-  wags: true,
+type Awards = {
+  [keyof: string]: AwardDetails;
 };
 
-let cat: DogAndCatUnion = {
-  name: "Bella",
-  purrs: true,
+type Post = {
+  title: string; // Type Annotations using semi-colons instead of commas
+  content: string;
+  date: Date;
+  author: Author; // Assign Author type to author property on Post type
+  awards: Awards;
 };
 
-let DogAndCat: DogAndCatUnion = {
-  name: "Hybrid",
-  barks: true,
-  wags: true,
-  purrs: true,
+let post: Post = {
+  title: "This is a blog post",
+  content: "Content of the post",
+  date: new Date(),
+  author: {
+    name: "John",
+    age: 32,
+    email: "john@doe.com",
+  },
+  awards: {
+    web: {
+      name: "Wed Awards",
+      date: new Date(),
+    },
+    web3: {
+      name: "Web 3",
+      date: new Date(),
+    },
+  },
 };
