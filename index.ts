@@ -1,16 +1,22 @@
-// Unknown is a better type than any
+// Date;
+// Array;
+// Map;
+// Set;
+// Promise;
+// RegExp;
+// Error;
+// Function;
+// Symbol;
+// WeakMap;
+// WeakSet;
 
-// function multiByTwo(number: unknown) {
-//     return number * 2;
-// }
+// As naming convention use Upper Camel Case or also called PascalCase
+type CustomString = string;
+type CustomNumberType = number;
+type CustomDate = Date;
+type CustomSymbol = Symbol;
 
-// You can check types ot avoid error when dealing
-function multiByTwo(number: unknown) {
-  if (typeof number === "number") {
-    return number * 2;
-  }
-  return "Please provide a valid number";
-}
-
-console.log(multiByTwo(4));
-console.log(multiByTwo("john"));
+let firstName: CustomString = "Mark";
+let age: CustomNumberType = 32;
+let today: CustomDate = new Date(); // Object instantiation hence has a constructor and new keyword
+let unique: CustomSymbol = Symbol(); // Primitive does not require new keyword
