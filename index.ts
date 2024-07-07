@@ -23,6 +23,7 @@ let post: Post = {
   date: new Date(),
 };
 
+// Advantage of type declaration, can use the same type again for a new object
 let post2: Post = {
   title: "This is a blog post 2",
   content: "Content of the post 2",
