@@ -1,2 +1,5 @@
 "use strict";
-// We'll dive deeper into Conditional Types later in the course
+// A funtion delclaration that never completes and returns a never type
+const throwError = (errorMsg) => {
+    throw new Error(errorMsg);
+};

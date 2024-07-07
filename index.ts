@@ -1,9 +1,13 @@
-type CustomDate = Date;
-type CustomString = string;
+// A subtype will always exten the parent type
+type check = any extends unknown ? true : false;
+type check2 = string extends any ? true : false;
+type check3 = number extends any ? true : false;
+type check4 = {} extends Object ? true : false;
+type check5 = [] extends Object ? true : false;
+type check6 = Function extends Object ? true : false;
+type check7 = never extends any ? true : false;
 
-// Type declarations using conditional types in TypeScript
-type TrueString = CustomString extends string ? true : false;
-type ConditionalNumber = CustomDate extends Date ? number : string;
-type DateAssigment = CustomDate extends Date ? Date : undefined;
-
-// We'll dive deeper into Conditional Types later in the course
+// A funtion delclaration that never completes and returns a never type
+const throwError = (errorMsg: string) => {
+  throw new Error(errorMsg);
+};
