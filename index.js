@@ -1,4 +1,5 @@
 "use strict";
+// Assign Airplane Type to Object
 let airplane = {
     model: "Airbus A380",
     flightNumber: "A2201",

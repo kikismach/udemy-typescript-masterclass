@@ -1,4 +1,27 @@
-let airplane = {
+// Declare a Caterer type
+type Caterer = {
+  name: string;
+  address: string;
+  phone: number;
+};
+
+// Declare a Seats type
+type Seats = {
+  [keyof: string]: string;
+};
+
+// Declare a Airplane Type
+type Airplane = {
+  model: string;
+  flightNumber: string;
+  timeOfDeparture: Date;
+  timeOfArrival: Date;
+  caterer: Caterer;
+  seats: Seats;
+};
+
+// Assign Airplane Type to Object
+let airplane: Airplane = {
   model: "Airbus A380",
   flightNumber: "A2201",
   timeOfDeparture: new Date(),
