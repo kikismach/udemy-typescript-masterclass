@@ -1,17 +1,9 @@
-// As naming convention use Upper Camel Case or also called PascalCase
-type StringOrNumber = string | number;
-type NumberOrUndefined = number | undefined;
-type StringNumberUndefined = string | number | undefined;
-type StringOrNull = string | null;
-type DateOrUndefined = Date | undefined;
-type SymbolOrNull = Symbol | null;
+type CustomDate = Date;
+type CustomString = string;
 
-// We will see a better way to make params optional later
-// when we talk about functions but for now input can be considered as undefined
-// as we are talking about basic union types
-function print(input: string | undefined) {
-  if (input) {
-    console.log(input);
-  }
-  console.log("Please input something to print");
-}
+// Type declarations using conditional types in TypeScript
+type TrueString = CustomString extends string ? true : false;
+type ConditionalNumber = CustomDate extends Date ? number : string;
+type DateAssigment = CustomDate extends Date ? Date : undefined;
+
+// We'll dive deeper into Conditional Types later in the course
