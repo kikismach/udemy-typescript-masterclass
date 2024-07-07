@@ -1,9 +1,16 @@
-// any type is the default JavaScript behavior of types.
-// The intention is to avoid any type
-let firstName: any = "Mark";
+// Unknown is a better type than any
 
-// Once any time is assigned then any value can be assigned to such variable
-firstName = 123;
+// function multiByTwo(number: unknown) {
+//     return number * 2;
+// }
 
-// Here we are assigning an array
-firstName = [5, 4, 8, 4];
+// You can check types ot avoid error when dealing
+function multiByTwo(number: unknown) {
+  if (typeof number === "number") {
+    return number * 2;
+  }
+  return "Please provide a valid number";
+}
+
+console.log(multiByTwo(4));
+console.log(multiByTwo("john"));
