@@ -1,25 +1,17 @@
 // As naming convention use Upper Camel Case or also called PascalCase
-type CustomString = string;
-type CustomNumberType = number;
-type CustomDate = Date;
-type CustomSymbol = Symbol;
+type StringOrNumber = string | number;
+type NumberOrUndefined = number | undefined;
+type StringNumberUndefined = string | number | undefined;
+type StringOrNull = string | null;
+type DateOrUndefined = Date | undefined;
+type SymbolOrNull = Symbol | null;
 
-// Duck Typing is used by TypeScript for inference of types
-//* "If it looks like a duck and quacks like a duck, it's a duck".
-let firstName: CustomString = "Mark";
-let age: CustomNumberType = 32;
-let today: CustomDate = new Date(); // Object instantiation hence has a constructor and new keyword
-let unique: CustomSymbol = Symbol(); // Primitive does not require new keyword
-
-// If you do not assign a type to a variable TS will still try to infer it
-// If I try to assign another type to firstName it will throw error
-let lastName = "Doe";
-lastName = 25;
-
-// This is an example of a declaration
-function addNumber(a: number, b: number) {
-  return a + b;
+// We will see a better way to make params optional later
+// when we talk about functions but for now input can be considered as undefined
+// as we are talking about basic union types
+function print(input: string | undefined) {
+  if (input) {
+    console.log(input);
+  }
+  console.log("Please input something to print");
 }
-
-// TypeScript is able to infer that final result will be a number
-let finalResult = addNumber(10, 15);
