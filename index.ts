@@ -17,11 +17,30 @@ type Author = {
   email: string;
 };
 
+// Declare a new type for Awards
+// Initial declaration
+// type Awards = {
+//   [keyof: string]: {
+//     name: string;
+//     date: Date;
+//   };
+// };
+
+type AwardDetails = {
+  name: string;
+  date: Date;
+};
+
+type Awards = {
+  [keyof: string]: AwardDetails;
+};
+
 type Post = {
   title: string; // Type Annotations using semi-colons instead of commas
   content: string;
   date: Date;
   author: Author; // Assign Author type to author property on Post type
+  awards: Awards;
 };
 
 let post: Post = {
@@ -32,5 +51,15 @@ let post: Post = {
     name: "John",
     age: 32,
     email: "john@doe.com",
+  },
+  awards: {
+    web: {
+      name: "Wed Awards",
+      date: new Date(),
+    },
+    web3: {
+      name: "Web 3",
+      date: new Date(),
+    },
   },
 };
