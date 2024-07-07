@@ -18,6 +18,7 @@ type CheckScore = typeof score extends never ? {} : [];
 
 // age = 85;
 // score.push(10);
+// score.push("New Score");
 // let customAge: CustomAge = 50;
 // let primitive: Primitive = new Date();
 // let years: CheckScore = [];
