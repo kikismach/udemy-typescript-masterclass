@@ -1,42 +1,47 @@
-// Declare a type for the Dog
-type Dog = {
-  name: string;
-  barks: boolean;
-  wags: boolean;
+// To Discriminate Unions All the three types must have the state property
+type NetworkLoadingState = {
+  state: "loading";
 };
 
-// Declare a type for the Cat
-type Cat = {
-  name: string;
-  purrs: boolean;
+type NetworkFailedState = {
+  state: "failed";
+  code: number;
 };
 
-// Create a new type which is a union of Dog and Cat
-type DogAndCatUnion = Dog | Cat;
-
-// All Dog properties
-let dog: DogAndCatUnion = {
-  name: "Buddy",
-  barks: true,
-  wags: true,
+type NetworkSuccessState = {
+  state: "success";
+  response: {
+    title: string;
+    duration: number;
+    summary: string;
+  };
 };
 
-// All Cat properties
-let cat: DogAndCatUnion = {
-  name: "Bella",
-  purrs: true,
-};
+// We Want to create a Network State with includes Loading, Failed and Success
+// Create a type which represents only one of the above types
+// but you aren't sure which it is yet.
+type NetworkState = NetworkLoadingState | NetworkFailedState | NetworkSuccessState;
 
-// All Dog and partial cat properties
-let dogAndCat: DogAndCatUnion = {
-  name: "Hybrid",
-  barks: true,
-  wags: true,
-  purrs: true,
-};
+// Based on the types created now we can discriminate the network state and take action based on the state
+// We need to create a logger function which logs the state of the network
+function logger(state: NetworkState): string {
+  // Right now TypeScript does not know which of the three
+  // potential types state could be.
 
-// Cannot contain partial Properties of one of the types
-let partialDog: DogAndCatUnion = {
-  name: "Hybrid",
-  barks: true,
-};
+  // Trying to access a property which isn't shared
+  // across all types will raise an error
+  //! state.code;
+
+  // By switching on state, TypeScript can narrow the union
+  // down in code flow analysis
+  switch (state.state) {
+    case "loading":
+      return "Downloading...";
+    case "failed":
+      // The type must be NetworkFailedState here,
+      // so accessing the `code` field is safe
+      return `Error ${state.code} downloading`;
+    case "success":
+      return `Downloaded ${state.response.title} - ${state.response.summary}`;
+  }
+}

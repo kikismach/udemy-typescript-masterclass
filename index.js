@@ -1,24 +1,22 @@
 "use strict";
-// All Dog properties
-let dog = {
-    name: "Buddy",
-    barks: true,
-    wags: true,
-};
-// All Cat properties
-let cat = {
-    name: "Bella",
-    purrs: true,
-};
-// All Dog and partial cat properties
-let dogAndCat = {
-    name: "Hybrid",
-    barks: true,
-    wags: true,
-    purrs: true,
-};
-// Cannot contain partial Properties of one of the types
-let partialDog = {
-    name: "Hybrid",
-    barks: true,
-};
+// Based on the types created now we can discriminate the network state and take action based on the state
+// We need to create a logger function which logs the state of the network
+function logger(state) {
+    // Right now TypeScript does not know which of the three
+    // potential types state could be.
+    // Trying to access a property which isn't shared
+    // across all types will raise an error
+    //! state.code;
+    // By switching on state, TypeScript can narrow the union
+    // down in code flow analysis
+    switch (state.state) {
+        case "loading":
+            return "Downloading...";
+        case "failed":
+            // The type must be NetworkFailedState here,
+            // so accessing the `code` field is safe
+            return `Error ${state.code} downloading`;
+        case "success":
+            return `Downloaded ${state.response.title} - ${state.response.summary}`;
+    }
+}
