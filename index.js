@@ -1,5 +1,5 @@
 "use strict";
-// A funtion delclaration that never completes and returns a never type
-const throwError = (errorMsg) => {
-    throw new Error(errorMsg);
-};
+// Types can be casted other types.
+// This shoudl be done when you are sure that TypeScript is not able to infer the types correctly
+let firstName = "Mark";
+let lastName = "Doe";
