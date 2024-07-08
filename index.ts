@@ -1,14 +1,14 @@
 // Defining a named function in TypeScript
-function intro(name: string, age: number): string {
+// Functions often need optional params
+// We can add optional params by using ? just like we do with objects, PAUSE AND PRACTICE
+function intro(name: string, age: number, country?: string): string {
+  if (country) {
+    return `My name is ${name} and I am ${age} years old, I live in ${country}`;
+  }
   return `My name is ${name} and I am ${age} years old`;
 }
 
-// Using a fucntion expression
-const intro2 = function (name: string, age: number): string {
-  return `My name is ${name} and I am ${age} years old`;
-};
-
-// Using the arrow function syntax
-const intro3 = (name: string, age: number): string => {
-  return `My name is ${name} and I am ${age} years old`;
-};
+// TypeScript will throw an error if all defualt params are not added as arguments
+// The error displays while you are programming and not at runtime
+//! intro("John");
+intro("John", 32);

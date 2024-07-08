@@ -1,13 +1,14 @@
 "use strict";
 // Defining a named function in TypeScript
-function intro(name, age) {
+// Functions often need optional params
+// We can add optional params by using ? just like we do with objects, PAUSE AND PRACTICE
+function intro(name, age, country) {
+    if (country) {
+        return `My name is ${name} and I am ${age} years old, I live in ${country}`;
+    }
     return `My name is ${name} and I am ${age} years old`;
 }
-// Using a fucntion expression
-const intro2 = function (name, age) {
-    return `My name is ${name} and I am ${age} years old`;
-};
-// Using the arrow function syntax
-const intro3 = (name, age) => {
-    return `My name is ${name} and I am ${age} years old`;
-};
+// TypeScript will throw an error if all defualt params are not added as arguments
+// The error displays while you are programming and not at runtime
+//! intro("John");
+intro("John", 32);
