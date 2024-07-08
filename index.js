@@ -1,21 +1,13 @@
 "use strict";
-// Declare and object of numbers
-let numbers = {
-    a: 2,
-    b: 3,
-    c: 4,
-};
-// create a function to print numbers
-// function sum(numbers: Numbers) {
-//   console.log(numbers);
-// }
-// Destructure numbers
-// TS will infer each of the destructured params correctly as number types
-function sum({ a, b, c }) {
-    return a + b + c;
-}
-// While invoking the function you pass the numbers object and
-// destructuring with type inference will play the role
-console.log(sum(numbers));
-// wrong type will lead to an error
-console.log(sum({ a: 3, b: 4, c: "c" }));
+// Example if function overloading
+// JavaScritp functions as Dynamic in natrue they can accept different arguments and based on that return results
+// Here is an example of the same
+// Show the slice method signature to show optional params
+const str = "Hello, World!";
+const part1 = str.slice(7);
+const part2 = str.slice(7, 10);
+// See this returns a different result and its up to you how you invoke the function
+// Whether you use single argument or two JS functions are Dynamic to return results
+// based on the arguments passed to the function
+console.log(part1);
+console.log(part2);
