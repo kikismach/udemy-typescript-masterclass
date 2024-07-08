@@ -1,20 +1,30 @@
-function returnParam<Type>(param: Type): Type {
-  return param;
+// A generic array function that gets first element of every type of array
+function getFirstElement<T>(arr: T[]): T {
+  return arr[0];
 }
 
-// Generic function declaration as an arrow function
-// using a call signature
-const myParam: <T>(param: T) => T = (param) => param;
+// We declare two different tyopes of array
+const numberArray = [1, 2, 3];
+const stringArray = ["a", "b", "c"];
 
-// Using a function expression
-const myParam2 = function <U>(param: U): U {
-  return param;
+// Typescript is correctly able to infer the value that will be return by expression
+// Even though the function is the same the returned type is different based on the input value
+let stringOutput = getFirstElement(stringArray);
+let numberOutput = getFirstElement(numberArray);
+
+// Generics can have constraints as well
+type HasLength = {
+  length: number;
 };
 
-// Using a call signature in an object
-type ObjectType = {
-  myParam: <V>(param: V) => V;
-};
+function logLength<T extends HasLength>(item: T): void {
+  console.log(item.length);
+}
 
-// Declare Generic Type
-type MyParam = <AnyName>(param: AnyName) => AnyName;
+// Any array like value that has a length property on it will be accepted as an argument
+logLength(numberArray);
+logLength(stringArray);
+logLength("Any String");
+
+// But if used for an object it will throw an error
+logLength({ name: "John", length: 12 });
