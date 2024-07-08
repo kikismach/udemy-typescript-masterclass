@@ -1,30 +1,43 @@
-// A generic array function that gets first element of every type of array
-function getFirstElement<T>(arr: T[]): T {
-  return arr[0];
-}
-
-// We declare two different tyopes of array
-const numberArray = [1, 2, 3];
-const stringArray = ["a", "b", "c"];
-
-// Typescript is correctly able to infer the value that will be return by expression
-// Even though the function is the same the returned type is different based on the input value
-let stringOutput = getFirstElement(stringArray);
-let numberOutput = getFirstElement(numberArray);
-
-// Generics can have constraints as well
-type HasLength = {
-  length: number;
+type KeyValuePair<K, V> = {
+  key: K;
+  value: V;
 };
 
-function logLength<T extends HasLength>(item: T): void {
-  console.log(item.length);
+const stringNumberPair: KeyValuePair<string, number> = {
+  key: "age",
+  value: 30,
+};
+
+const numberBooleanPair: KeyValuePair<number, boolean> = {
+  key: 1,
+  value: true,
+};
+
+console.log(stringNumberPair); // Output: { key: 'age', value: 30 }
+console.log(numberBooleanPair); // Output: { key: 1, value: true }
+
+/**
+ * Generics Constraints With Objects
+ */
+
+type HasId = {
+  id: number;
+};
+
+function printId<T extends HasId>(obj: T): void {
+  console.log(obj.id);
 }
 
-// Any array like value that has a length property on it will be accepted as an argument
-logLength(numberArray);
-logLength(stringArray);
-logLength("Any String");
+const user = {
+  id: 1,
+  name: "Alice",
+};
 
-// But if used for an object it will throw an error
-logLength({ name: "John", length: 12 });
+printId(user); // Output: 1
+
+const product = {
+  id: 101,
+  name: "Laptop",
+};
+
+printId(product); // Output: 101
