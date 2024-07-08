@@ -40,3 +40,16 @@ var Direction3;
 })(Direction3 || (Direction3 = {}));
 // Enums are available in JavaScript as Objects
 console.log(Roles);
+// Show the use of value
+let eDirection = 0 /* EDirection.Up */;
+// Declaring an object with same values as a constant
+// Typescript sets each property as readonly
+const ODirection = {
+    Up: 0,
+    Down: 1,
+    Left: 2,
+    Right: 3,
+};
+// Now this acts as an enum because you cannot change the value of properties
+console.log("Object as const", ODirection.Up);
+ODirection.Up = "newValue";
