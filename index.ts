@@ -1,13 +1,15 @@
-const students = ["Alice", "Bob", "Mark"];
+// At times there are functions which do not return anything
+// this function does not return anything
+// Hence for rerturn type we can use a special TypeScript type called void
+function writeToDatabase(value: string): void {
+  console.log("Writing to database:", value);
+}
 
-// Lets assume that you are looping through the students array
-// Since students is an array fo strings even when using annonymous function like this
-// TypeScript is able to correctly infer the type of each student
-students.map((student) => {
-  console.log(student);
-});
+// This is different from void because this function never completes execution
+function throwError(error: string): never {
+  throw new Error(error);
+}
 
-// This also works with the function defined using the function keyword and not just the arrow functions
-students.map(function (student) {
-  console.log(student);
-});
+// We check these types and hence void can be used in place of never but not visa versa
+type check = never extends void ? true : false;
+type checks = void extends never ? true : false;
