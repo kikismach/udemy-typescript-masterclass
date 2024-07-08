@@ -53,3 +53,15 @@ const ODirection = {
 // Now this acts as an enum because you cannot change the value of properties
 console.log("Object as const", ODirection.Up);
 ODirection.Up = "newValue";
+// Enums can contain computed values as well
+var AccessPermission;
+(function (AccessPermission) {
+    AccessPermission[AccessPermission["None"] = 0] = "None";
+    AccessPermission[AccessPermission["Read"] = 1] = "Read";
+    AccessPermission[AccessPermission["Write"] = 2] = "Write";
+    AccessPermission[AccessPermission["ReadWrite"] = 3] = "ReadWrite";
+    AccessPermission[AccessPermission["Delete"] = 4] = "Delete";
+    AccessPermission[AccessPermission["All"] = 7] = "All";
+})(AccessPermission || (AccessPermission = {}));
+console.log(AccessPermission.ReadWrite);
+console.log(AccessPermission.All);
