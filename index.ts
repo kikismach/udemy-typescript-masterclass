@@ -15,6 +15,7 @@ type Author = {
   name: string;
   age: number;
   email: string;
+  readonly type: "human" | "ai";
 };
 
 // Declare a new type for Awards
@@ -53,6 +54,7 @@ let post: Post = {
     name: "John",
     age: 32,
     email: "john@doe.com",
+    type: "human",
   },
   awards: {
     web: {
@@ -74,6 +76,7 @@ let post2: Post = {
     name: "John",
     age: 32,
     email: "john@doe.com",
+    type: "human",
   },
   awards: {
     web: {
@@ -82,3 +85,6 @@ let post2: Post = {
     },
   },
 };
+
+// Readonly properties once created cannot be re-assigned
+post2.author.type = "ai";
