@@ -1,52 +1,23 @@
-// Declaring an array of numbers
-let a: number[] = [1, 2, 3];
-//  Generic syntax of declaring array of strings
-let b: Array<string> = ["a", "b", "c"];
-// Array containing mutiple types
-let c: (string | number)[] = ["a", "b", 1];
+// What if the person arraty needs to have a fixed set of values
+// We create a Tuple for such a situation
+let person: [string, string, number];
+person = ["John", "Doe", 18];
 
-// Declare a Caterer type
-type Caterer = {
-  name: string;
-  address: string;
-  phone: number;
-};
+// A user array can have optional properties as well
+let user: [string, string, number, string?];
+user = ["Mark", "Doe", 21, "mark@doe.com"];
 
-// Declare a Seats type
-type Seats = {
-  [keyof: string]: string;
-};
+// Tuple with multiple string value which do not exist at the time of declaration
+type listOfStudents = [number, boolean, ...string[]];
 
-// Declare a Airplane Type
-type Airplane = {
-  model: string;
-  flightNumber: string;
-  timeOfDeparture: Date;
-  timeOfArrival: Date;
-  caterer: Caterer;
-  seats: Seats;
-};
+const passingStudents: listOfStudents = [3, true, "John", "Stella", "Mark"];
 
-// Declarign a type for an array of Airplanes
-// Example of an array of objects
-type Airplanes = Airplane[];
+const failingStudents: listOfStudents = [1, false, "Scott"];
 
-// Assign Airplane Type to Object
-let airplanes: Airplanes = [
-  {
-    model: "Airbus A380",
-    flightNumber: "A2201",
-    timeOfDeparture: new Date(),
-    timeOfArrival: new Date(),
-    caterer: {
-      name: "Special Food Ltd",
-      address: "484, Some Street, New York",
-      phone: 7867856751,
-    },
-    seats: {
-      A1: "John Doe",
-      A2: "Mark Doe",
-      A3: "Sam Doe",
-    },
-  },
-];
+// Tuples with any number of value in the beginning or end
+// Type Alias can be used with Tuples as well
+type StringBooleansNumber = [string, ...boolean[], number];
+type BooleansStringNumber = [...boolean[], string, number];
+
+let stringBooleanNumber: StringBooleansNumber = ["string", true, false, 32];
+let booleanStringNumber: BooleansStringNumber = [true, false, "string", 32];
