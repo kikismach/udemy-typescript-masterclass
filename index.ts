@@ -13,7 +13,7 @@ type ReadOnlyPerson = readonly [string, string, number];
 // Creating a new readonly person
 const person: ReadOnlyPerson = ["John", "Smith", 32];
 
-//  There are some alternavite syntax for creating Readonly Arrays
+//  There are some alternavites for creating Readonly Arrays
 type a = Readonly<string[]>;
 type b = ReadonlyArray<string>;
 
