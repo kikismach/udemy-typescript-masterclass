@@ -1,15 +1,24 @@
-// At times there are functions which do not return anything
-// this function does not return anything
-// Hence for rerturn type we can use a special TypeScript type called void
-function writeToDatabase(value: string): void {
-  console.log("Writing to database:", value);
+//  Async fucntion in JavaScript always return a promise
+// Declaration of async function using the function keyword
+async function fetchFromDatabase(id: number): Promise<any> {}
+
+//  Declaration of async fucntion using the arrow function syntax
+const anotherAsyncFunction = async (): Promise<any> => {};
+
+// Async fucntion as a function express
+const fucntionExpression = async function (): Promise<any> {};
+
+// Setting return types apart from any
+async function returnString(id: number): Promise<string> {
+  return Promise.resolve("string");
 }
 
-// This is different from void because this function never completes execution
-function throwError(error: string): never {
-  throw new Error(error);
-}
+type User = {
+  name: string;
+  age: number;
+};
 
-// We check these types and hence void can be used in place of never but not visa versa
-type check = never extends void ? true : false;
-type checks = void extends never ? true : false;
+// If User type is nto returned TS throws an error
+async function returnObject(id: number): Promise<User> {
+  return Promise.resolve({ name: "John", age: 21 });
+}
