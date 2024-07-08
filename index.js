@@ -1,18 +1,7 @@
 "use strict";
-// Assign Airplane Type to Object
-let airplane = {
-    model: "Airbus A380",
-    flightNumber: "A2201",
-    timeOfDeparture: new Date(),
-    timeOfArrival: new Date(),
-    caterer: {
-        name: "Special Food Ltd",
-        address: "484, Some Street, New York",
-        phone: 7867856751,
-    },
-    seats: {
-        A1: "John Doe",
-        A2: "Mark Doe",
-        A3: "Sam Doe",
-    },
-};
+// An array can be converted into readonly using the readopnly keyword
+let number = [1, 2, 3];
+// Once an array is readonly no values can be added or removed from an array
+number.push(1);
+// Creating a new readonly person
+const person = ["John", "Smith", 32];

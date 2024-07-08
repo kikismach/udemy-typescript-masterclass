@@ -1,23 +1,21 @@
-// What if the person arraty needs to have a fixed set of values
-// We create a Tuple for such a situation
-let person: [string, string, number];
-person = ["John", "Doe", 18];
+// An array can be converted into readonly using the readopnly keyword
+let number: readonly number[] = [1, 2, 3];
 
-// A user array can have optional properties as well
-let user: [string, string, number, string?];
-user = ["Mark", "Doe", 21, "mark@doe.com"];
+// Once an array is readonly no values can be added or removed from an array
+number.push(1);
 
-// Tuple with multiple string value which do not exist at the time of declaration
-type listOfStudents = [number, boolean, ...string[]];
+// A tuple can be read only also
+type ReadOnlyTuple = readonly [string, string, number];
 
-const passingStudents: listOfStudents = [3, true, "John", "Stella", "Mark"];
+// For our example let's create a new Tuple which is readonly
+type ReadOnlyPerson = readonly [string, string, number];
 
-const failingStudents: listOfStudents = [1, false, "Scott"];
+// Creating a new readonly person
+const person: ReadOnlyPerson = ["John", "Smith", 32];
 
-// Tuples with any number of value in the beginning or end
-// Type Alias can be used with Tuples as well
-type StringBooleansNumber = [string, ...boolean[], number];
-type BooleansStringNumber = [...boolean[], string, number];
+//  There are some alternavite syntax for creating Readonly Arrays
+type a = Readonly<string[]>;
+type b = ReadonlyArray<string>;
 
-let stringBooleanNumber: StringBooleansNumber = ["string", true, false, 32];
-let booleanStringNumber: BooleansStringNumber = [true, false, "string", 32];
+//  Alternative syntax for Readonly Tuple
+type c = Readonly<[string, string, number]>;
