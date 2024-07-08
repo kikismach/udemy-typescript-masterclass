@@ -1,37 +1,13 @@
-enum AgeUnit {
-  Years = "years",
-  Months = "months",
-}
+const students = ["Alice", "Bob", "Mark"];
 
-// Greeting can be defined as a type as well
-type GreetingFunction = (greeting: string /* can have additional params */) => string;
+// Lets assume that you are looping through the students array
+// Since students is an array fo strings even when using annonymous function like this
+// TypeScript is able to correctly infer the type of each student
+students.map((student) => {
+  console.log(student);
+});
 
-type Person = {
-  name: string;
-  age: number;
-  ageUnit: AgeUnit;
-  country: string;
-  // greet: Function;
-  greet: GreetingFunction;
-};
-
-let person: Person = {
-  name: "Scott",
-  age: 30,
-  ageUnit: AgeUnit.Years,
-  country: "USA",
-  greet: (greeting) => {
-    return `${greeting} ${person.name}`;
-  },
-};
-
-function convertAgeToMonths(person: Person): Person {
-  if (person.ageUnit === AgeUnit.Years) {
-    person.age = person.age * 12;
-    person.ageUnit = AgeUnit.Months;
-  }
-  return person;
-}
-
-console.log(convertAgeToMonths(person));
-console.log(person.greet("Hello"));
+// This also works with the function defined using the function keyword and not just the arrow functions
+students.map(function (student) {
+  console.log(student);
+});
