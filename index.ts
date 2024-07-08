@@ -15,7 +15,7 @@ console.log(part2);
 // Hypothtical AirTicket Reservation System
 type Reservation = {
   departureDate: Date;
-  returnDate?: Date;
+  returnDate: Date;
   departingFrom: string;
   destination: string;
 };
