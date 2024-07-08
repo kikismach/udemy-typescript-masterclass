@@ -1,21 +1,45 @@
-// An array can be converted into readonly using the readopnly keyword
-let number: readonly number[] = [1, 2, 3];
+// Auto incrementing values given to enums
+enum Direction {
+  Up,
+  Down,
+  Left,
+  Right,
+}
 
-// Once an array is readonly no values can be added or removed from an array
-number.push(1);
+// Assigning the first number and the rest would auto increment
+enum Direction2 {
+  Up = 1,
+  Down,
+  Left,
+  Right,
+}
 
-// A tuple can be read only also
-type ReadOnlyTuple = readonly [string, string, number];
+// String Enums
+export enum Roles {
+  admin = "admin",
+  author = "author",
+  editor = "editor",
+}
 
-// For our example let's create a new Tuple which is readonly
-type ReadOnlyPerson = readonly [string, string, number];
+// Use case for enums
+type Person = {
+  name: string;
+  email: string;
+  password: string;
+  role: Roles;
+};
 
-// Creating a new readonly person
-const person: ReadOnlyPerson = ["John", "Smith", 32];
+const person: Person = {
+  name: "John",
+  email: "john@email.com",
+  password: "password",
+  role: Roles.admin,
+};
 
-//  There are some alternavites for creating Readonly Arrays
-type a = Readonly<string[]>;
-type b = ReadonlyArray<string>;
-
-//  Alternative syntax for Readonly Tuple
-type c = Readonly<[string, string, number]>;
+// Enums can be hetrogeneous as well
+// Assigning the first number and the rest would auto increment
+enum Direction3 {
+  Up = 1,
+  Down = "Down",
+  Left = "Left",
+}
