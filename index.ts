@@ -43,3 +43,6 @@ enum Direction3 {
   Down = "Down",
   Left = "Left",
 }
+
+// Enums are available in JavaScript as Objects
+console.log(Roles);
