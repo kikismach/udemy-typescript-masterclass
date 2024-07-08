@@ -1,14 +1,20 @@
 "use strict";
-// Defining a named function in TypeScript
-// Functions often need optional params
-// We can add optional params by using ? just like we do with objects, PAUSE AND PRACTICE
-function intro(name, age, country) {
-    if (country) {
-        return `My name is ${name} and I am ${age} years old, I live in ${country}`;
+var AgeUnit;
+(function (AgeUnit) {
+    AgeUnit["Years"] = "years";
+    AgeUnit["Months"] = "months";
+})(AgeUnit || (AgeUnit = {}));
+let person = {
+    name: "Scott",
+    age: 30,
+    ageUnit: AgeUnit.Years,
+    country: "USA",
+};
+function convertAgeToMonths(person) {
+    if (person.ageUnit === AgeUnit.Years) {
+        person.age = person.age * 12;
+        person.ageUnit = AgeUnit.Months;
     }
-    return `My name is ${name} and I am ${age} years old`;
+    return person;
 }
-// TypeScript will throw an error if all defualt params are not added as arguments
-// The error displays while you are programming and not at runtime
-//! intro("John");
-intro("John", 32);
+console.log(convertAgeToMonths(person));
