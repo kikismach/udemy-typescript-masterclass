@@ -1,4 +1,15 @@
+//  Why Are enums needed?
+// We ofetn declare constants in JavaScript for eg.
+const STATUS_LOADING = "loading";
+const STATUS_STOPPED = "stopped";
+
+// The intension of declaring these constants is that we do not want the value to change
+// because these cannot be reassiged to developers bny mistake cannot do this
+// JavaScript will not throw an error but will not reassign the constant it will always remain loading
+STATUS_LOADING = "stopped";
+
 // Auto incrementing values given to enums
+// Single enum can contain all values
 enum Direction {
   Up,
   Down,
