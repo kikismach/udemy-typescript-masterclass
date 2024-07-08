@@ -1,67 +1,7 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Roles = void 0;
-// Auto incrementing values given to enums
-var Direction;
-(function (Direction) {
-    Direction[Direction["Up"] = 0] = "Up";
-    Direction[Direction["Down"] = 1] = "Down";
-    Direction[Direction["Left"] = 2] = "Left";
-    Direction[Direction["Right"] = 3] = "Right";
-})(Direction || (Direction = {}));
-// Assigning the first number and the rest would auto increment
-var Direction2;
-(function (Direction2) {
-    Direction2[Direction2["Up"] = 1] = "Up";
-    Direction2[Direction2["Down"] = 2] = "Down";
-    Direction2[Direction2["Left"] = 3] = "Left";
-    Direction2[Direction2["Right"] = 4] = "Right";
-})(Direction2 || (Direction2 = {}));
-// String Enums
-var Roles;
-(function (Roles) {
-    Roles["admin"] = "admin";
-    Roles["author"] = "author";
-    Roles["editor"] = "editor";
-})(Roles || (exports.Roles = Roles = {}));
-const person = {
-    name: "John",
-    email: "john@email.com",
-    password: "password",
-    role: Roles.admin,
-};
-// Enums can be hetrogeneous as well
-// Assigning the first number and the rest would auto increment
-var Direction3;
-(function (Direction3) {
-    Direction3[Direction3["Up"] = 1] = "Up";
-    Direction3["Down"] = "Down";
-    Direction3["Left"] = "Left";
-})(Direction3 || (Direction3 = {}));
-// Enums are available in JavaScript as Objects
-console.log(Roles);
-// Show the use of value
-let eDirection = 0 /* EDirection.Up */;
-// Declaring an object with same values as a constant
-// Typescript sets each property as readonly
-const ODirection = {
-    Up: 0,
-    Down: 1,
-    Left: 2,
-    Right: 3,
-};
-// Now this acts as an enum because you cannot change the value of properties
-console.log("Object as const", ODirection.Up);
-ODirection.Up = "newValue";
-// Enums can contain computed values as well
-var AccessPermission;
-(function (AccessPermission) {
-    AccessPermission[AccessPermission["None"] = 0] = "None";
-    AccessPermission[AccessPermission["Read"] = 1] = "Read";
-    AccessPermission[AccessPermission["Write"] = 2] = "Write";
-    AccessPermission[AccessPermission["ReadWrite"] = 3] = "ReadWrite";
-    AccessPermission[AccessPermission["Delete"] = 4] = "Delete";
-    AccessPermission[AccessPermission["All"] = 7] = "All";
-})(AccessPermission || (AccessPermission = {}));
-console.log(AccessPermission.ReadWrite);
-console.log(AccessPermission.All);
+// Practice Questions
+//* 1. Create an array numbers that only accepts numbers and another array strings that only accepts strings.
+//* 2. Create a tuple person that holds a string (name) and a number (age).
+//* 3. Create a readonly array colors that holds strings and a readonly tuple point that holds two numbers (x, y). Attempt to modify their elements and observe the TypeScript error.
+//* 4. Create an enum called StatusEnum that should 3 properties Active, Inactive, Pending
+//* 5. Create an object as const called Status with the same structure as an StatusEnum
