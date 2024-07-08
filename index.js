@@ -1,20 +1,21 @@
 "use strict";
-// Unlimited function params using the
-function multiplyBy(by, ...numbers) {
-    return numbers.map((eachNumber) => by * eachNumber);
+// Declare and object of numbers
+let numbers = {
+    a: 2,
+    b: 3,
+    c: 4,
+};
+// create a function to print numbers
+// function sum(numbers: Numbers) {
+//   console.log(numbers);
+// }
+// Destructure numbers
+// TS will infer each of the destructured params correctly as number types
+function sum({ a, b, c }) {
+    return a + b + c;
 }
-// Calling the function
-console.log(multiplyBy(2, 3, 4, 5));
-console.log(multiplyBy(2, 3, 4));
-// Strictly typing rest parameters
-const args = [8, 5];
-// We get this erro because if we see the signature of the function it takes in 2 arguments
-// Here TS s not sure that args will always contain 2 arguments
-const angle = Math.atan2(...args);
-// The solution is to define args as a tuple
-const args1 = [8, 5];
-// Now TypeScript will not thwo an error because it will now know that args are always of a fixed length because its a tuple
-const angle1 = Math.atan2(...args1);
-// We can define type annotate it like this as well
-const args2 = [8, 5]; // Here using as const is not needed
-const angle2 = Math.atan2(...args2);
+// While invoking the function you pass the numbers object and
+// destructuring with type inference will play the role
+console.log(sum(numbers));
+// wrong type will lead to an error
+console.log(sum({ a: 3, b: 4, c: "c" }));
