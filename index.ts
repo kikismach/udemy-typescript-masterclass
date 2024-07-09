@@ -18,7 +18,7 @@ let numberOutput = getFirstElement(numberArray);
 // what if the above function was declared with a different placement of generic
 type FirstElement<T> = (arr: T[]) => T;
 
-// Here if the egenetic type is not passed at the time of function declaration TS will throw and error
+// Here if the generic type is not passed at the time of function declaration TS will throw and error
 // So now you need to tell TypeScript which types can we used with this fucntion which solves a completely different purpose from the function that has been declared above
 // Hover over the function param and you will see that TS now identifies that param will be an
 // array of strings
