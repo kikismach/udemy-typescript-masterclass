@@ -1,18 +1,25 @@
 "use strict";
-// Define a generic function to fetch data with a default type
-async function fetchData(url) {
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
+// Trying to create a simple implementation of JavaScript's own filter method
+const filter = (array, predicate) => {
+    let result = [];
+    for (let i = 0; i < array.length; i++) {
+        let item = array[i];
+        if (predicate(item)) {
+            result.push(item);
+        }
+    }
+    return result;
+};
+let numbers = [1, 3, 4, 6, 9, 7, 10, 12];
+// Predicate to filter all numbers greater than 7
+function predicate(item) {
+    return item > 7;
 }
-// Using the fetchData function with the default type (any)
-async function fetchDefault() {
-    const data = await fetchData("https://jsonplaceholder.typicode.com/posts/1");
-    console.log(data); // Output: any data structure, depends on the response
+let animals = ["cat", "bat", "rat", "mat"];
+// Predicate to filter all cats from animals array
+function filterCats(item) {
+    return item === "cat";
 }
-fetchDefault();
-async function fetchPost() {
-    const post = await fetchData("https://jsonplaceholder.typicode.com/posts/1");
-    console.log(post); // Output: { userId: 1, id: 1, title: "...", body: "..." }
-}
-fetchPost();
+// Result of invoking the function
+console.log(filter(numbers, predicate));
+console.log(filter(animals, filterCats));
