@@ -5,7 +5,7 @@ type Filter = {
 };
 
 // Trying to create a simple implementation of JavaScript's own filter method
-const filter = (array: any[], predicate: Function) => {
+const filter = <T>(array: T[], predicate: (item: T) => boolean): T[] => {
   let result: any[] = [];
   for (let i = 0; i < array.length; i++) {
     let item = array[i];
