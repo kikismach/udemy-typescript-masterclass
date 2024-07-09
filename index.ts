@@ -1,33 +1,20 @@
-type Filter = {
-  (array: number[], predicate: (item: number) => boolean): number[];
-  (array: string[], predicate: (item: string) => boolean): string[];
-  (array: object[], predicate: (item: object) => boolean): object[];
-};
-
-// Trying to create a simple implementation of JavaScript's own filter method
-const filter = <T>(array: T[], predicate: (item: T) => boolean): T[] => {
-  let result: any[] = [];
-  for (let i = 0; i < array.length; i++) {
-    let item = array[i];
-    if (predicate(item)) {
-      result.push(item);
-    }
+const map = <T, U>(array: T[], func: (item: T) => U) => {
+  // check if the array is empty
+  if (array.length === 0) {
+    return array;
   }
+  // Create a new array to collect values
+  let result = [];
+  // Loop through each item and call the func
+  for (let i = 0; i < array.length; i++) {
+    result[i] = func(array[i]);
+  }
+  // return new array
   return result;
 };
 
-let numbers = [1, 3, 4, 6, 9, 7, 10, 12];
-// Predicate to filter all numbers greater than 7
-function predicate(item: number) {
-  return item > 7;
-}
+let numbers = [4, 5, 6, 7, 8];
 
-let animals = ["cat", "bat", "rat", "mat"];
-// Predicate to filter all cats from animals array
-function filterCats(item: string) {
-  return item === "cat";
-}
+const converted = map(numbers, (num) => num.toString());
 
-// Result of invoking the function
-console.log(filter(numbers, predicate));
-console.log(filter(animals, filterCats));
+console.log(converted);

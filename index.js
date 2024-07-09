@@ -1,25 +1,18 @@
 "use strict";
-// Trying to create a simple implementation of JavaScript's own filter method
-const filter = (array, predicate) => {
-    let result = [];
-    for (let i = 0; i < array.length; i++) {
-        let item = array[i];
-        if (predicate(item)) {
-            result.push(item);
-        }
+const map = (array, func) => {
+    // check if the array is empty
+    if (array.length === 0) {
+        return array;
     }
+    // Create a new array to collect values
+    let result = [];
+    // Loop through each item and call the func
+    for (let i = 0; i < array.length; i++) {
+        result[i] = func(array[i]);
+    }
+    // return new array
     return result;
 };
-let numbers = [1, 3, 4, 6, 9, 7, 10, 12];
-// Predicate to filter all numbers greater than 7
-function predicate(item) {
-    return item > 7;
-}
-let animals = ["cat", "bat", "rat", "mat"];
-// Predicate to filter all cats from animals array
-function filterCats(item) {
-    return item === "cat";
-}
-// Result of invoking the function
-console.log(filter(numbers, predicate));
-console.log(filter(animals, filterCats));
+let numbers = [4, 5, 6, 7, 8];
+const converted = map(numbers, (num) => num.toString());
+console.log(converted);
