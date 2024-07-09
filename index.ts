@@ -1,49 +1,30 @@
-type Events = {
+// Define a generic function to fetch data with a default type
+async function fetchData<T = any>(url: string): Promise<T> {
+  const response = await fetch(url);
+  const data: T = await response.json();
+  return data;
+}
+
+// Using the fetchData function with the default type (any)
+async function fetchDefault() {
+  const data = await fetchData("https://jsonplaceholder.typicode.com/posts/1");
+  console.log(data); // Output: any data structure, depends on the response
+}
+
+fetchDefault();
+
+// Using the fetchData function with a specified type
+// Lets declare a type based on the response that we get from the above fake API
+interface Post {
+  userId: number;
   id: number;
-  date: Date;
-  type: "indoor" | "outdoor";
-};
+  title: string;
+  body: string;
+}
 
-// The keyof operator takes an object type and produces a string or numeric literal union of its keys. The following type P is the same type
-// -> "id" | "date" | "type"
+async function fetchPost() {
+  const post = await fetchData<Post>("https://jsonplaceholder.typicode.com/posts/1");
+  console.log(post); // Output: { userId: 1, id: 1, title: "...", body: "..." }
+}
 
-type UnionOfKeysOfEvents = keyof Events;
-
-// You see these are literally the union of name of the keys of the Events object
-let idOfEvent: UnionOfKeysOfEvents = "id";
-let dateOfEvent: UnionOfKeysOfEvents = "date";
-
-// If index signatures where keys are defined as numeric properties
-type Numeric = {
-  [key: number]: string;
-};
-
-type NumericKeyOf = keyof Numeric;
-
-type NumberAndString = {
-  [key: string]: string;
-};
-// We get a union of numbers as well as a string because this is how JavaScript objects work behind the scenes
-// NumberAndString is string | number — this is because JavaScript object keys are always coerced to a string, so obj[0] is always the same as obj["0"].
-type NumberAndStringKeyoff = keyof NumberAndString;
-
-let stringObject: NumberAndString = {
-  0: "first",
-  second: "first",
-};
-
-// Accessing the object proerty with the index of the property
-console.log(stringObject["0"]);
-
-// Declaring partial types using generics and keyof
-type Person = {
-  name: string;
-  age: number;
-  address: string;
-};
-
-// Creating a type where the keys are the same as Person but the values are optional and nullable
-// Hover over PartialPerson to see how TypeScript is inferring it
-type PartialPerson = {
-  [K in keyof Person]?: Person[K] | null;
-};
+fetchPost();
