@@ -1,3 +1,9 @@
+type Filter = {
+  (array: number[], predicate: (item: number) => boolean): number[];
+  (array: string[], predicate: (item: string) => boolean): string[];
+  (array: object[], predicate: (item: object) => boolean): object[];
+};
+
 // Trying to create a simple implementation of JavaScript's own filter method
 const filter = (array: any[], predicate: Function) => {
   let result: any[] = [];
