@@ -36,3 +36,17 @@ let stringOutput2 = returnParam("string");
 let numberOutput = returnParam(100);
 let numberArray = returnParam([1, 2, 3]);
 let objectOutput = returnParam({ name: "Mark", age: 21 });
+
+// Generic function declaration as an arrow function
+// using a call signature
+const myParam: <T>(param: T) => T = (param) => param;
+
+// Using a function expression
+const myParam2 = function <U>(param: U): U {
+  return param;
+};
+
+// Using a call signature in an object
+type ObjectType = {
+  myParam: <V>(param: V) => V;
+};
