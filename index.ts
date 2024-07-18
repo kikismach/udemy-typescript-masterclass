@@ -11,3 +11,6 @@ type check7 = never extends any ? true : false;
 const throwError = (errorMsg: string) => {
   throw new Error(errorMsg);
 };
+
+let strings: Object = ["a", "b"];
+let myFunc: Function = () => 2;
