@@ -10,15 +10,22 @@ class User {
     }
 }
 class Admin extends User {
-    constructor() {
-        super(...arguments);
+    // NOw the constructor will require the super method to invoke the constructor of parent class
+    // Till you do not add the constructor to the Admin class super method is not needed
+    // But the moment you add the constructor the super mothod is needed
+    constructor(name, email, usersReporting, lastName) {
+        // It is important to invoke the super meothod with the same signature as the
+        // constructor of the parent class.
+        super(name, email, lastName);
         this.isAdmin = true;
+        // Super can be invoked with a processed value within a constructor is your choice.
+        // Its just that it has to be invoked
+        // super ("John", "john@email.com");
+        this.usersReporting = usersReporting;
     }
 }
-// A class is used as a type by TypeScript.
-// Here user is inferred as a type of User class
-// Should match the shape of the User class and can be annotated as a User object
 const user = new User("Mark", "Mark@email.com");
-const admin = new Admin("John", "John@email.com");
+// Now users reporting need to be added to initialiser
+const admin = new Admin("John", "John@email.com", 11);
 console.log(user);
 console.log(admin);
