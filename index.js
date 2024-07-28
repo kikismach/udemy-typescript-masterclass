@@ -3,8 +3,8 @@ class User {
     constructor(name, email, phone, lastName) {
         this.name = name;
         this.email = email;
-        this.lastName = lastName;
         this.phone = phone;
+        this.lastName = lastName;
     }
     greet() {
         return `Hello ${this.name}`;
@@ -13,6 +13,7 @@ class User {
 class Admin extends User {
     constructor(name, email, phone, usersReporting, lastName) {
         super(name, email, phone, lastName);
+        this.usersReporting = usersReporting;
         this.isAdmin = true;
         this.usersReporting = usersReporting;
     }
