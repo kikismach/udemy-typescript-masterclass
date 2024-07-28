@@ -1,9 +1,11 @@
 "use strict";
 class User {
-    constructor() {
+    constructor(name, email) {
         // This is how you define the properties of a class
         this.name = "John";
         this.email = "john@email.com";
+        console.log(name);
+        console.log(email);
     }
     greet() {
         return `Hello John`;
@@ -11,8 +13,8 @@ class User {
 }
 // A class can be used to create an instance of itself
 // An instance is an object that you create from a class
-const user = new User();
-const user2 = new User();
+const user = new User("Mark", "Mark@email.com");
+const user2 = new User("Alice", "alice@email.com");
 // This class generates the same object everytime
 // We will see how to solve this in the next lecture
 console.log(user);
