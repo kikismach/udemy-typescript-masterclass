@@ -1,6 +1,6 @@
 "use strict";
 class User {
-    constructor(name, email, phone, lastName) {
+    constructor(name, email, lastName) {
         this.name = name;
         this.email = email;
         this.lastName = lastName;
@@ -10,8 +10,8 @@ class User {
     }
 }
 class Admin extends User {
-    constructor(name, email, phone, usersReporting, lastName) {
-        super(name, email, phone, lastName);
+    constructor(name, email, usersReporting, lastName) {
+        super(name, email, lastName);
         this.isAdmin = true;
         this.usersReporting = usersReporting;
     }
@@ -21,8 +21,8 @@ class Admin extends User {
         console.log(this.name);
     }
 }
-const user = new User("Mark", "Mark@email.com", 123456);
-const admin = new Admin("John", "John@email.com", 123456, 11);
+const user = new User("Mark", "Mark@email.com");
+const admin = new Admin("John", "John@email.com", 11);
 // These properties were assigned a value and these can be seen in the console
 // Changing the properties below changes the values as these are public properties
 user.name = "Alice";

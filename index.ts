@@ -5,7 +5,7 @@ class User {
   // If an access modifier is not mentioned the default remains public
   lastName?: string;
 
-  constructor(name: string, email: string, phone: number, lastName?: string) {
+  constructor(name: string, email: string, lastName?: string) {
     this.name = name;
     this.email = email;
     this.lastName = lastName;
@@ -20,14 +20,8 @@ class Admin extends User {
   isAdmin: boolean = true;
   usersReporting: number;
 
-  constructor(
-    name: string,
-    email: string,
-    phone: number,
-    usersReporting: number,
-    lastName?: string
-  ) {
-    super(name, email, phone, lastName);
+  constructor(name: string, email: string, usersReporting: number, lastName?: string) {
+    super(name, email, lastName);
     this.usersReporting = usersReporting;
   }
 
@@ -38,8 +32,8 @@ class Admin extends User {
   }
 }
 
-const user: User = new User("Mark", "Mark@email.com", 123456);
-const admin: Admin = new Admin("John", "John@email.com", 123456, 11);
+const user: User = new User("Mark", "Mark@email.com");
+const admin: Admin = new Admin("John", "John@email.com", 11);
 
 // These properties were assigned a value and these can be seen in the console
 // Changing the properties below changes the values as these are public properties
