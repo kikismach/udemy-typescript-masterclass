@@ -1,6 +1,6 @@
 "use strict";
 class User {
-    constructor(name, email, lastName) {
+    constructor(name, email, phone, lastName) {
         this.name = name;
         this.email = email;
         this.lastName = lastName;
@@ -10,22 +10,25 @@ class User {
     }
 }
 class Admin extends User {
-    // NOw the constructor will require the super method to invoke the constructor of parent class
-    // Till you do not add the constructor to the Admin class super method is not needed
-    // But the moment you add the constructor the super mothod is needed
-    constructor(name, email, usersReporting, lastName) {
-        // It is important to invoke the super meothod with the same signature as the
-        // constructor of the parent class.
-        super(name, email, lastName);
+    constructor(name, email, phone, usersReporting, lastName) {
+        super(name, email, phone, lastName);
         this.isAdmin = true;
-        // Super can be invoked with a processed value within a constructor is your choice.
-        // Its just that it has to be invoked
-        // super ("John", "john@email.com");
         this.usersReporting = usersReporting;
     }
+    // Public properties are accessible inside the child classes also
+    // even methods can have access modifiers not just the properties
+    printName() {
+        console.log(this.name);
+    }
 }
-const user = new User("Mark", "Mark@email.com");
-// Now users reporting need to be added to initialiser
-const admin = new Admin("John", "John@email.com", 11);
+const user = new User("Mark", "Mark@email.com", 123456);
+const admin = new Admin("John", "John@email.com", 123456, 11);
+// These properties were assigned a value and these can be seen in the console
+// Changing the properties below changes the values as these are public properties
+user.name = "Alice";
+admin.lastName = "Doe";
 console.log(user);
 console.log(admin);
+// Since the printname method is public it can be accessed from the object itself
+// or outside the class
+admin.printName();

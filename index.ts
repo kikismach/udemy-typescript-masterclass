@@ -1,11 +1,11 @@
 class User {
-  // This is how you define the properties of a class
-  name: string;
-  // making the email as readonly property
+  // Convert name to public
+  public name: string;
   readonly email: string;
+  // If an access modifier is not mentioned the default remains public
   lastName?: string;
 
-  constructor(name: string, email: string, lastName?: string) {
+  constructor(name: string, email: string, phone: number, lastName?: string) {
     this.name = name;
     this.email = email;
     this.lastName = lastName;
@@ -20,25 +20,35 @@ class Admin extends User {
   isAdmin: boolean = true;
   usersReporting: number;
 
-  // NOw the constructor will require the super method to invoke the constructor of parent class
-  // Till you do not add the constructor to the Admin class super method is not needed
-  // But the moment you add the constructor the super mothod is needed
-  constructor(name: string, email: string, usersReporting: number, lastName?: string) {
-    // It is important to invoke the super meothod with the same signature as the
-    // constructor of the parent class.
-    super(name, email, lastName);
-
-    // Super can be invoked with a processed value within a constructor is your choice.
-    // Its just that it has to be invoked
-    // super ("John", "john@email.com");
-
+  constructor(
+    name: string,
+    email: string,
+    phone: number,
+    usersReporting: number,
+    lastName?: string
+  ) {
+    super(name, email, phone, lastName);
     this.usersReporting = usersReporting;
+  }
+
+  // Public properties are accessible inside the child classes also
+  // even methods can have access modifiers not just the properties
+  public printName() {
+    console.log(this.name);
   }
 }
 
-const user: User = new User("Mark", "Mark@email.com");
-// Now users reporting need to be added to initialiser
-const admin: Admin = new Admin("John", "John@email.com", 11);
+const user: User = new User("Mark", "Mark@email.com", 123456);
+const admin: Admin = new Admin("John", "John@email.com", 123456, 11);
+
+// These properties were assigned a value and these can be seen in the console
+// Changing the properties below changes the values as these are public properties
+user.name = "Alice";
+admin.lastName = "Doe";
 
 console.log(user);
 console.log(admin);
+
+// Since the printname method is public it can be accessed from the object itself
+// or outside the class
+admin.printName();
