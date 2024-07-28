@@ -1,12 +1,12 @@
 "use strict";
 class Person {
-    constructor(firstname, lastname, age) {
+    constructor(firstname, lastname) {
         this.firstname = firstname;
         this.lastname = lastname;
-        this.age = age;
-        // We want the age to be between a valid human age value
-        // It cannot be negative or above human life expectancy
-        // Writing conditional logic inside the constructor like this is not a good idea
+    }
+    // I need a better way to set the age of the person
+    // The logic needs to be encapsulated inside a method separate from constructor
+    set age(age) {
         if (age > 200 || age < 0) {
             throw new Error("The age must be within range of 0-200");
         }
@@ -15,9 +15,9 @@ class Person {
         return this.firstname + this.lastname;
     }
 }
-const john = new Person("John", "Doe", 45);
-const mark = new Person("Mark", "Doe", 35);
-// I can set the age to a negative value if age is remains as a public property
+const john = new Person("John", "Doe");
+const mark = new Person("Mark", "Doe");
+// Age can nw be set like a property and providing an invalid age will throw an error
 john.age = 210;
 mark.age = -10;
 console.log(john);

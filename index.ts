@@ -1,8 +1,12 @@
 class Person {
-  constructor(public firstname: string, public lastname: string, public age: number) {
-    // We want the age to be between a valid human age value
-    // It cannot be negative or above human life expectancy
-    // Writing conditional logic inside the constructor like this is not a good idea
+  // This _age property is for the internal use of the class and not exposed to outside world
+  private _age?: number;
+
+  constructor(public firstname: string, public lastname: string) {}
+
+  // I need a better way to set the age of the person
+  // The logic needs to be encapsulated inside a method separate from constructor
+  public set age(age: number) {
     if (age > 200 || age < 0) {
       throw new Error("The age must be within range of 0-200");
     }
@@ -13,10 +17,10 @@ class Person {
   }
 }
 
-const john: Person = new Person("John", "Doe", 45);
-const mark: Person = new Person("Mark", "Doe", 35);
+const john: Person = new Person("John", "Doe");
+const mark: Person = new Person("Mark", "Doe");
 
-// I can set the age to a negative value if age is remains as a public property
+// Age can nw be set like a property and providing an invalid age will throw an error
 john.age = 210;
 mark.age = -10;
 
