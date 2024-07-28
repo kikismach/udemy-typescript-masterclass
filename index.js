@@ -1,34 +1,28 @@
 "use strict";
-class Person {
-    constructor(firstname, lastname) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-    }
-    // I need a better way to set the age of the person
-    // The logic needs to be encapsulated inside a method separate from constructor
-    set age(age) {
-        if (age > 200 || age < 0) {
-            throw new Error("The age must be within range of 0-200");
-        }
-        this._age = age;
-    }
-    get age() {
-        if (this._age === undefined) {
-            throw new Error("The age property has not been set as yet");
-        }
-        return this._age;
-    }
-    get fullname() {
-        return `${this.firstname} ${this.lastname}`;
-    }
-}
-const john = new Person("John", "Doe");
-const mark = new Person("Mark", "Doe");
-john.age = 50;
-mark.age = 30;
-// We can access the age like a property even though there is a method behind the scenes
-// that is working to fetch the age for us using one of the private properties of a class
-console.log(john.age);
-console.log(mark.age);
-// Now full name can be access on a class as if if was the property of the class
-console.log(john.fullname);
+/**
+ * * Practice Problem
+ * * You are building a simple library management system.
+ * * Implement the following requirements using TypeScript:
+ *
+ * TODO: 1. Create a class Book with the following properties:
+ * * - title (string, required)
+ * * - author (string, required)
+ * * - yearPublished (number, optional)
+ * * - ISBN (string, readonly)
+ *
+ * TODO: 2. Define a constructor function to initialize the Book class with title, author,yearPublished, and ISBN.
+ *
+ * TODO: 3. Ensure that the constructor function uses the this keyword to assign values to the class properties.
+ *
+ * TODO: 4. Create an instance of the Book class and log its details.
+ *
+ * TODO: 5. Create a function logBookDetails that takes an instance of Book as a parameter and logs its details.
+ *
+ * TODO: 6. Create a subclass EBook that extends the Book class. Add the following properties:
+ * * - fileSize (number, required)
+ * * - format (string, required)
+ *
+ * TODO:7. Use the super method to call the constructor of the parent class Book from the EBook class.
+ *
+ * TODO: 8. Ensure that the yearPublished property in the Book class is optional and the ISBN property is readonly.
+ */
