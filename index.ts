@@ -12,12 +12,8 @@ class User {
     this.phone = phone;
   }
 
-  greet() {
+  greet(): string {
     return `Hello ${this.name}`;
-  }
-
-  public printPhone() {
-    console.log(this.phone);
   }
 }
 
@@ -32,21 +28,14 @@ class Admin extends User {
     usersReporting: number,
     lastName?: string
   ) {
-    // You can still use the super method to create a new user and assign the private
-    // member its value while instantiating the object from the class
     super(name, email, phone, lastName);
     this.usersReporting = usersReporting;
   }
 
-  public printName() {
-    console.log(this.name);
-  }
-
-  // You will now see the error in TS
-  // This is bacause protected memebers can't be access even in child classes
-  // they can only be access in parent classes
-  protected printPhone() {
-    console.log(this.phone);
+  // A greet methods can override the parent class method
+  // but the condition is that the child class methods must have the same signature
+  greet(): string {
+    return `Hello ${this.name}! I am the admin.`;
   }
 }
 
@@ -54,15 +43,6 @@ class Admin extends User {
 const user: User = new User("Mark", "Mark@email.com", 123456);
 const admin: Admin = new Admin("John", "John@email.com", 123456, 11);
 
-user.name = "Alice";
-admin.lastName = "Doe";
-
-// You will see that phone number can't be accessed on any of the objects
-console.log(user.phone);
-console.log(admin.phone);
-
-admin.printName();
-
-// You will see the method that is inside the class has the access to the
-// private members of the class
-console.log(user.printPhone());
+// Greet methods on both objects would return a different greeting
+console.log(user.greet());
+console.log(admin.greet());
