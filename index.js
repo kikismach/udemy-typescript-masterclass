@@ -1,18 +1,20 @@
 "use strict";
-const map = (array, func) => {
-    // check if the array is empty
-    if (array.length === 0) {
-        return array;
+class User {
+    constructor() {
+        // This is how you define the properties of a class
+        this.name = "John";
+        this.email = "john@email.com";
     }
-    // Create a new array to collect values
-    let result = [];
-    // Loop through each item and call the func
-    for (let i = 0; i < array.length; i++) {
-        result[i] = func(array[i]);
+    greet() {
+        return `Hello John`;
     }
-    // return new array
-    return result;
-};
-let numbers = [4, 5, 6, 7, 8];
-const converted = map(numbers, (num) => num.toString());
-console.log(converted);
+}
+// A class can be used to create an instance of itself
+// An instance is an object that you create from a class
+const user = new User();
+const user2 = new User();
+// This class generates the same object everytime
+// We will see how to solve this in the next lecture
+console.log(user);
+console.log(user2);
+console.log(user.greet());
