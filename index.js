@@ -10,6 +10,7 @@ class Person {
         if (age > 200 || age < 0) {
             throw new Error("The age must be within range of 0-200");
         }
+        this._age = age;
     }
     fullname() {
         return this.firstname + this.lastname;
