@@ -1,41 +1,30 @@
-class User {
-  constructor(
-    public name: string,
-    readonly email: string,
-    private phone: number,
-    public lastName?: string
-  ) {}
+class Person {
+  constructor(public firstname: string, public lastname: string, public age: number) {
+    // We want the age to be between a valid human age value
+    // It cannot be negative or above human life expectancy
+    // Writing conditional logic inside the constructor like this is not a good idea
+    if (age > 200 || age < 0) {
+      throw new Error("The age must be within range of 0-200");
+    }
+  }
 
-  greet(): string {
-    return `Hello ${this.name}`;
+  public fullname() {
+    return this.firstname + this.lastname;
   }
 }
 
-class Admin extends User {
-  public isAdmin: boolean = true;
+const john: Person = new Person("John", "Doe", 45);
+const mark: Person = new Person("Mark", "Doe", 35);
 
-  constructor(
-    name: string,
-    email: string,
-    phone: number,
-    public usersReporting: number,
-    lastName?: string
-  ) {
-    super(name, email, phone, lastName);
-    this.usersReporting = usersReporting;
-  }
+// I can set the age to a negative value if age is remains as a public property
+john.age = 210;
+mark.age = -10;
 
-  // A greet methods can override the parent class method
-  // but the condition is that the child class methods must have the same signature
-  greet(): string {
-    return `Hello ${this.name}! I am the admin.`;
-  }
-}
+console.log(john);
+console.log(mark);
 
-// Create users with phone numbers now
-const user: User = new User("Mark", "Mark@email.com", 123456);
-const admin: Admin = new Admin("John", "John@email.com", 123456, 11);
+// Also if I need to combine properties like first and last name
+// a method to do so is an ot an elegant solution
+console.log(john.fullname());
 
-// Greet methods on both objects would return a different greeting
-console.log(user.greet());
-console.log(admin.greet());
+// Something like john.fullname would be a better option to have
