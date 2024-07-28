@@ -3,6 +3,7 @@ class User {
     constructor(name, email, lastName) {
         this.name = name;
         this.email = email;
+        this.lastName = lastName;
     }
     greet() {
         return `Hello ${this.name}`;
