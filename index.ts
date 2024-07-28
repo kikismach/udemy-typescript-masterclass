@@ -8,6 +8,7 @@ class User {
   constructor(name: string, email: string, lastName?: string) {
     this.name = name;
     this.email = email;
+    this.lastName = lastName;
   }
 
   greet() {
