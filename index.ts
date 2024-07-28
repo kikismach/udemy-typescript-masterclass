@@ -10,25 +10,31 @@ class Person {
     if (age > 200 || age < 0) {
       throw new Error("The age must be within range of 0-200");
     }
+    this._age = age;
   }
 
-  public fullname() {
-    return this.firstname + this.lastname;
+  public get age() {
+    if (this._age === undefined) {
+      throw new Error("The age property has not been set as yet");
+    }
+    return this._age;
+  }
+
+  public get fullname() {
+    return `${this.firstname} ${this.lastname}`;
   }
 }
 
 const john: Person = new Person("John", "Doe");
 const mark: Person = new Person("Mark", "Doe");
 
-// Age can nw be set like a property and providing an invalid age will throw an error
-john.age = 210;
-mark.age = -10;
+john.age = 50;
+mark.age = 30;
 
-console.log(john);
-console.log(mark);
+// We can access the age like a property even though there is a method behind the scenes
+// that is working to fetch the age for us using one of the private properties of a class
+console.log(john.age);
+console.log(mark.age);
 
-// Also if I need to combine properties like first and last name
-// a method to do so is an ot an elegant solution
-console.log(john.fullname());
-
-// Something like john.fullname would be a better option to have
+// Now full name can be access on a class as if if was the property of the class
+console.log(john.fullname);
