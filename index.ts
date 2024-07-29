@@ -1,3 +1,15 @@
+class User {
+  constructor(public name: string) {
+  }
+}
+
+class Password {
+  constructor(public password: string) {
+  }
+}
+
+class RegisteredUser extends User, Password {}
+
 enum AutomobileTypes {
   car = "car",
   bus = "bus",
@@ -33,7 +45,9 @@ interface CommercialVehicle {
   licenseRenewalDate: Date;
 }
 
-class Truck implements Automobile<string, AutomobileBrands, AutomobileColors>, CommercialVehicle {
+class Truck
+  implements Automobile<string, AutomobileBrands, AutomobileColors>,
+    CommercialVehicle {
   public type: string = "truck";
 
   constructor(
@@ -42,7 +56,8 @@ class Truck implements Automobile<string, AutomobileBrands, AutomobileColors>, C
     public description: string,
     public capacity: string,
     public licenseRenewalDate: Date
-  ) {}
+  ) {
+  }
 }
 
 const toyotaTruck: Truck = new Truck(
