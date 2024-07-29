@@ -1,57 +1,34 @@
-enum AutomobileTypes {
-  car = "car",
-  bus = "bus",
-  van = "van",
-  truck = "truck",
-  bike = "bike",
+type User = {
+  name: string;
+};
+
+type AdminUser = {
+  isAdmin: boolean;
+};
+
+const userAndAdmin: User & AdminUser = {
+  name: "John",
+  isAdmin: true,
+};
+
+// Union Type
+const userOrAdmin: User | AdminUser = {
+  name: "Mark",
+};
+
+// Tuples
+type ResponseTuple = [string | number];
+
+interface Name {
+  name: string;
 }
 
-enum AutomobileBrands {
-  ferrari = "ferrari",
-  honda = "honda",
-  bmw = "bmw",
-  toyota = "toyota",
+interface LastName {
+  lastName: string;
 }
 
-enum AutomobileColors {
-  red = "red",
-  blue = "blue",
-  white = "white",
-  black = "black",
-  silver = "silver",
+class Person implements Name, LastName {
+  constructor(public name: string, public lastName: string) {}
 }
 
-interface Automobile<Type, Brand, Colors> {
-  type: Type;
-  brand: Brand;
-  colors: Colors[];
-  description: string;
-}
-
-interface CommercialVehicle {
-  capacity: string;
-  licenseRenewalDate: Date;
-}
-
-class Truck implements Automobile<string, AutomobileBrands, AutomobileColors>, CommercialVehicle {
-  public type: string = "truck";
-
-  constructor(
-    private brand: AutomobileBrands,
-    public colors: AutomobileColors[],
-    public description: string,
-    public capacity: string,
-    public licenseRenewalDate: Date,
-    private driverName: string = "John"
-  ) {}
-}
-
-const toyotaTruck: Truck = new Truck(
-  AutomobileBrands.toyota,
-  [AutomobileColors.black, AutomobileColors.silver],
-  "This is a Toyota Truck",
-  "15 Tonners",
-  new Date()
-);
-
-console.log(toyotaTruck);
+const person: Person = new Person("John", "Doe");
