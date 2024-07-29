@@ -28,27 +28,20 @@ interface Automobile<Type, Brand, Colors> {
   description: string;
 }
 
-const ferrari: Automobile<AutomobileTypes, AutomobileBrands, AutomobileColors> = {
-  type: AutomobileTypes.car,
-  brand: AutomobileBrands.ferrari,
-  colors: [AutomobileColors.black, AutomobileColors.red],
-  description: "This is a ferrari",
-};
+class Car implements Automobile<string, AutomobileBrands, AutomobileColors> {
+  public type: string = "car";
 
-const honda: Automobile<string, string, string> = {
-  type: "car",
-  brand: "Honda",
-  colors: ["silver", "black"],
-  description: "This is a Honda",
-};
+  constructor(
+    public brand: AutomobileBrands,
+    public colors: AutomobileColors[],
+    public description: string
+  ) {}
+}
 
-const toyota: Automobile<string, AutomobileBrands, number> = {
-  type: "car",
-  brand: AutomobileBrands.toyota,
-  colors: [6676, 97897],
-  description: "This is a Toyota",
-};
+const ferrari: Car = new Car(
+  AutomobileBrands.ferrari,
+  [AutomobileColors.red, AutomobileColors.black],
+  "This is a Ferrari"
+);
 
 console.log(ferrari);
-console.log(honda);
-console.log(toyota);
