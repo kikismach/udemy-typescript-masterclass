@@ -1,46 +1,19 @@
-type Identifiable = {
-  id: number;
-};
-
-// We need to declare a generic class that can hold items which have id's
-// It can be a repository of any entity that has an id property associated with it
-class Repository<T extends Identifiable> {
-  private items: T[] = [];
-
-  add(item: T): void {
-    this.items.push(item);
-  }
-
-  getById(id: number): T | undefined {
-    return this.items.find((item) => item.id === id);
-  }
-
-  getAll(): T[] {
-    return this.items;
-  }
-
-  removeById(id: number): void {
-    this.items = this.items.filter((item) => item.id !== id);
-  }
-}
-
-// Example usage with a User type
-interface User extends Identifiable {
-  name: string;
-  email: string;
-}
-
-const userRepository = new Repository<User>();
-
-userRepository.add({ id: 1, name: "Alice", email: "alice@example.com" });
-userRepository.add({ id: 2, name: "Bob", email: "bob@example.com" });
-
-console.log(userRepository.getById(1));
-// Output: { id: 1, name: 'Alice', email: 'alice@example.com' }
-
-console.log(userRepository.getAll());
-// Output: [ { id: 1, name: 'Alice', email: 'alice@example.com' }, { id: 2, name: 'Bob', email: 'bob@example.com' } ]
-
-userRepository.removeById(1);
-console.log(userRepository.getAll());
-// Output: [ { id: 2, name: 'Bob', email: 'bob@example.com' } ]
+/**
+ * ! You are developing a simple employee management system for a company. Implement the following requirements using TypeScript:
+ *
+ * TODO: 1. Class Definition: Create a class Employee with the following properties:
+ ** -  name (string, public)
+ ** -  age (number, public)
+ ** -  salary (number, private)
+ ** -  id (number, protected)
+ *
+ * TODO: 2. Use shorthand syntax in the constructor to initialize the properties name and age.
+ *
+ * TODO: 3. Implement getter and setter methods for the salary property. The setter should ensure the salary is a positive number.
+ *
+ * TODO: 4. Add a static property companyName (string, public) and a static method getCompanyName that returns the company name.
+ *
+ * TODO: 5. Create a subclass Manager that extends the Employee class. Add an additional property department (string, public).
+ *
+ * TODO: 6. Override a method getDetails in the Manager class to include the department information along with the employee details.
+ */
