@@ -12,3 +12,25 @@ function Timestamp<TBase extends Constructor>(Base: TBase) {
     }
   };
 }
+
+// Base User class
+class User {
+  constructor(public name: string) {}
+}
+
+// Composing the final class using mixins
+class UserWithTimestamp extends Timestamp(User) {
+  constructor(name: string, public age: number) {
+    super(name);
+  }
+
+  // Since timestamp is protected we can declare a displayInfor method to
+  // display the required information
+  displayInfo() {
+    console.log(`Name: ${this.name}, Age: ${this.age}`);
+    console.log(`Timestamp: ${this.getTimestamp()}`); // Call method from Timestamp mixin
+  }
+}
+
+const user = new UserWithTimestamp("Alice", 30);
+user.displayInfo();
