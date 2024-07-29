@@ -5,7 +5,7 @@ type Constructor = new (...args: any[]) => {};
 function Timestamp<TBase extends Constructor>(Base: TBase) {
   // The function returns a new class that extends the passed Base class
   return class extends Base {
-    timestamp: Date = new Date();
+    protected timestamp: Date = new Date();
 
     getTimestamp() {
       return this.timestamp;
