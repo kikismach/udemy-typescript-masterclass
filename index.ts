@@ -1,34 +1,32 @@
-type User = {
+abstract class Person {
+  public abstract name: string;
+  public abstract email: string;
+  public abstract phone: number;
+
+  public greeting() {
+    console.log(`Hello ${this.name}`);
+  }
+}
+
+class RegisteredPerson extends Person {
+  constructor(public name: string, public email: string, public phone: number) {
+    super();
+  }
+}
+
+const person: RegisteredPerson = new RegisteredPerson("John", "john@email.com", 987889788);
+
+person.greeting();
+console.log(person);
+
+/**
+ *
+ * index2.ts
+ */
+interface User {
   name: string;
-};
-
-type AdminUser = {
-  isAdmin: boolean;
-};
-
-const userAndAdmin: User & AdminUser = {
-  name: "John",
-  isAdmin: true,
-};
-
-// Union Type
-const userOrAdmin: User | AdminUser = {
-  name: "Mark",
-};
-
-// Tuples
-type ResponseTuple = [string | number];
-
-interface Name {
-  name: string;
+  email: string;
+  phone: string;
 }
 
-interface LastName {
-  lastName: string;
-}
-
-class Person implements Name, LastName {
-  constructor(public name: string, public lastName: string) {}
-}
-
-const person: Person = new Person("John", "Doe");
+class RegisteredUser implements User {}
