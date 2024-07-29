@@ -3,6 +3,7 @@ type Holidays = {
   reason: string;
 }[];
 
+// Abstract class
 abstract class Department {
   protected abstract holidays: Holidays;
   protected constructor(protected name: string) {}
