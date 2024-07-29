@@ -38,10 +38,27 @@ class Car implements Automobile<string, AutomobileBrands, AutomobileColors> {
   ) {}
 }
 
+class Truck implements Automobile<string, AutomobileBrands, AutomobileColors> {
+  public type: string = "truck";
+
+  constructor(
+    public brand: AutomobileBrands,
+    public colors: AutomobileColors[],
+    public description: string
+  ) {}
+}
+
 const ferrari: Car = new Car(
   AutomobileBrands.ferrari,
   [AutomobileColors.red, AutomobileColors.black],
   "This is a Ferrari"
 );
 
+const toyotaTruck: Truck = new Truck(
+  AutomobileBrands.toyota,
+  [AutomobileColors.black, AutomobileColors.silver],
+  "This is a Toyota Truck"
+);
+
 console.log(ferrari);
+console.log(toyotaTruck);
