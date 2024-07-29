@@ -4,6 +4,7 @@ type Identifiable = {
 
 // We need to declare a generic class that can hold items which have id's
 // It can be a repository of any entity that has an id property associated with it
+// The  repository needs to have methods for adding, removing and getting entities
 class Repository<T extends Identifiable> {
   private items: T[] = [];
 
