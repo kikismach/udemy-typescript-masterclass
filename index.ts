@@ -32,3 +32,34 @@ class AdminDepartment extends Department {
     super("Admin Department");
   }
 }
+
+const itHolidays: Holidays = [
+  {
+    date: new Date(2022, 11, 1),
+    reason: "IT Department Day",
+  },
+  {
+    date: new Date(2022, 12, 25),
+    reason: "Chistmas",
+  },
+];
+
+const adminHolidays: Holidays = [
+  {
+    date: new Date(2022, 10, 1),
+    reason: "Admin Department Day",
+  },
+  {
+    date: new Date(2022, 12, 25),
+    reason: "Chistmas",
+  },
+];
+
+const itDepartment: ItDepartment = new ItDepartment();
+const adminDepartment: AdminDepartment = new AdminDepartment();
+
+itDepartment.addHolidays(itHolidays);
+adminDepartment.addHolidays(adminHolidays);
+
+console.log(itDepartment);
+console.log(adminDepartment);
