@@ -14,12 +14,12 @@ interface AircraftInterface {
   boeingMethod?: () => void;
 }
 
-function MethodDecorator(
-  classPrototype: Object,
+function StaticMethodDecorator(
+  constructor: Object,
   methodName: string,
   descriptor: PropertyDescriptor
 ) {
-  console.log(classPrototype);
+  console.log(constructor);
   console.log(methodName);
   console.log(descriptor);
   descriptor.writable = true;
@@ -27,8 +27,11 @@ function MethodDecorator(
 
 class Airplane implements AircraftInterface {
   constructor(public _aircraftModel: string, private pilot: string) {}
+  @StaticMethodDecorator
+  public static seatCount(): void {
+    console.log("150 Seats");
+  }
 
-  @MethodDecorator
   public pilotName() {
     console.log(this.pilot);
   }
@@ -38,7 +41,3 @@ class Airplane implements AircraftInterface {
   }
 }
 const airplane: AircraftInterface = new Airplane("Airbus A380", "John");
-
-airplane.pilotName = () => console.log("Function Changed");
-
-airplane.pilotName();
