@@ -5,7 +5,9 @@ function FirstDecorator(constructor: Function) {
 
 @FirstDecorator
 class Aircraft {
-  constructor(public _aircraftModel: string, private pilot: string) {}
+  constructor(public _aircraftModel: string, private pilot: string) {
+    console.log("Aircraft Class Instantiated");
+  }
 
   public pilotName() {
     console.log(this.pilot);
@@ -15,3 +17,5 @@ class Aircraft {
     return this._aircraftModel;
   }
 }
+
+const aircraft = new Aircraft("Airbus A380", "John");
