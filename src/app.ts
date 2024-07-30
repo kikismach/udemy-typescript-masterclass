@@ -1,43 +1,22 @@
-enum Manufacturers {
-  boeing = "boeing",
-  airbus = "airbus",
+function ParameterDecorator(classPrototype: Object, methodname: string, index: number) {
+  console.log(classPrototype);
+  console.log(methodname);
+  console.log(index);
 }
 
-interface AircraftInterface {
-  _aircraftModel: string;
-  pilotName: () => void;
-  prototype?: any;
-  origin?: string;
-  manufacturer?: string;
-  type?: string;
-  airbusMethod?: () => void;
-  boeingMethod?: () => void;
-}
+class Airplane {
+  constructor(public _aircraftModel: string) {}
 
-function StaticMethodDecorator(
-  constructor: Object,
-  methodName: string,
-  descriptor: PropertyDescriptor
-) {
-  console.log(constructor);
-  console.log(methodName);
-  console.log(descriptor);
-  descriptor.writable = true;
-}
-
-class Airplane implements AircraftInterface {
-  constructor(public _aircraftModel: string, private pilot: string) {}
-  @StaticMethodDecorator
   public static seatCount(): void {
     console.log("150 Seats");
   }
 
-  public pilotName() {
-    console.log(this.pilot);
+  public pilotName(name: string, @ParameterDecorator lastName: string) {
+    console.log(name);
+    console.log(lastName);
   }
 
   public get aircraftModel() {
     return this._aircraftModel;
   }
 }
-const airplane: AircraftInterface = new Airplane("Airbus A380", "John");
