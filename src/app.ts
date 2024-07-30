@@ -1,34 +1,9 @@
-/** 
- * 
- As we add more validators, we’re going to want to have some kind of organization scheme so that we can keep track of our types and not worry about name collisions with other objects. Instead of putting lots of different names into the global namespace, let’s wrap up our objects into a namespace.
- */
-
-// Lets add all our validation logic inside a namespace called Validation
-namespace Validation {
-  // Since interface is used outside the code we need to export it
-  export interface StringValidator {
-    isAcceptable(key: string): boolean;
-  }
-
-  // We do not need to export the constants because they are not used
-  // By out code outside of the namespace they are implementation details
-  let lettersRegexp = /^[A-Za-z]+$/;
-  let numberRegexp = /^[0-9]+$/;
-
-  // Since class is used outside the code we need to export it
-  export class LettersOnlyValidator implements StringValidator {
-    isAcceptable(value: string) {
-      return lettersRegexp.test(value);
-    }
-  }
-
-  // Since class is used outside the code we need to export it
-  export class ZipCodeValidator implements StringValidator {
-    isAcceptable(value: string) {
-      return value.length === 5 && numberRegexp.test(value);
-    }
-  }
-}
+/// <reference path="validation/Validation.ts" />
+/// <reference path="validation/LettersOnlyValidator.ts" />
+/// <reference path="validation/ZipCodeValidator.ts" />
+//  there are multiple files involved, we’ll need to make sure all of the compiled code gets loaded. There are two ways of doing this.
+// Change the property outFile - to one single file to which all JS needs to be compiled to
+// Only works with the AMD and System modules and nothing else
 
 let values = ["Hello", "98052", "101"];
 
