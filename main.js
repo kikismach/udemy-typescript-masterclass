@@ -49,6 +49,12 @@ function AdminUser(name, email, peopleReporting) {
   this.peopleReporting = peopleReporting;
 }
 
+AdminUser.prototype = Object.create(User.prototype);
+
+AdminUser.prototype.updatePeopleReporting = function (newNumber) {
+  this.peopleReporting = newNumber;
+};
+
 const user = new User("John", "john@email.com");
 
 const admin = new AdminUser("Mark", "mark@email.com", 10);
