@@ -1,14 +1,19 @@
-// value -> The value of the property
-// writable (boolean) -> whether this property in question is writable or not
-// enumerable (boolean)  -> whether you can enumerate or loop through this property or not
-// configurable (boolean) -> The configurable property tells whether the user has permission
-//								           to change property descriptor such as to change the value of
-//                           writable and enumerable settings.
+const book = new Object();
 
-const book = {
-  title: "the title",
-  pages: 300,
-  author: "John",
-};
+Object.defineProperty(book, "title", {
+  value: "This is the title of the book",
+  writeable: true,
+  enumerable: true,
+  configurable: true,
+});
 
-console.log(Object.getOwnPropertyDescriptors(book));
+Object.defineProperty(book, "author", {
+  value: "John",
+  writeable: false,
+  enumerable: true,
+  configurable: true,
+});
+
+book.author = "Mark";
+
+console.log(book);
