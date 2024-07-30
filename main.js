@@ -3,19 +3,16 @@
 
 const book = {
   title: "The Title",
+  authors: ["John", "Mark", "Rob"],
   read() {
     console.log(this);
   },
+
+  printAuthors() {
+    this.authors.forEach((author) => {
+      console.log(this.title, " - ", author);
+    });
+  },
 };
 
-book.stopreading = function () {
-  console.log(this);
-};
-
-book.stopreading();
-
-function watchmovie() {
-  console.log(this);
-}
-
-watchmovie();
+book.printAuthors();
