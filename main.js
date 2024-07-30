@@ -29,20 +29,20 @@ function User(name, email) {
   this.name = name;
   this.email = email;
   this.points = 0;
-
-  this.login = () => {
-    console.log(this.name, "Has logged in");
-  };
-
-  this.logout = () => {
-    console.log(this.name, "Has logged out");
-  };
-
-  this.addPoint = () => {
-    this.points++;
-    console.log("total points", this.points);
-  };
 }
+
+User.prototype.login = function () {
+  console.log(this.name, "Has logged in");
+};
+
+User.prototype.logout = function () {
+  console.log(this.name, "Has logged out");
+};
+
+User.prototype.addPoint = function () {
+  this.points++;
+  console.log("total points", this.points);
+};
 
 const user = new User("John", "john@email.com");
 
