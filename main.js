@@ -1,18 +1,26 @@
-// method -> object
-// function -> window, global
+class User {
+  constructor(name, email) {
+    this.name = name;
+    this.email = email;
+    this.points = 0;
+  }
 
-const book = {
-  title: "The Title",
-  authors: ["John", "Mark", "Rob"],
-  read() {
-    console.log(this);
-  },
+  login() {
+    console.log(this.name, "Has logged in");
+  }
 
-  printAuthors() {
-    this.authors.forEach((author) => {
-      console.log(this.title, " - ", author);
-    });
-  },
-};
+  logout() {
+    console.log(this.name, "Has logged out");
+  }
 
-book.printAuthors();
+  addPoint() {
+    this.points++;
+    console.log("total points", this.points);
+  }
+}
+
+const user = new User("John", "john@email.com");
+const user2 = new User("Mark", "mark@email.com");
+
+console.log(user);
+user2.addPoint();
