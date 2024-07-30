@@ -9,7 +9,7 @@ let values = ["Hello", "98052", "101"];
 
 // Now wherever we need to use any of the types declare above in a namespace we need
 // to qualify them with the namespace name just like you would access the property of an object
-// using the dot notation.
+// using the dot notation
 
 // Doing this we have now assigned a namespce to all our validation types and these names
 // now do no exist in the GLOBAL namespace, but are specific to Validation namespace
