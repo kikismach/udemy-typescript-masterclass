@@ -1,35 +1,14 @@
-enum Manufacturers {
-  boeing = "boeing",
-  airbus = "airbus",
+function FirstDecorator(name: string) {
+  return function (constructor: Function) {
+    console.log(`${name} Invoked`);
+    console.log(constructor);
+  };
 }
 
-interface AircraftInterface {
-  _aircraftModel: string;
-  pilotName: () => void;
-  prototype?: any;
-  origin?: string;
-  manufacturer?: string;
-  type?: string;
-  airbusMethod?: () => void;
-  boeingMethod?: () => void;
-}
-
-function StaticMethodDecorator(
-  constructor: Object,
-  methodName: string,
-  descriptor: PropertyDescriptor
-) {
-  console.log(constructor);
-  console.log(methodName);
-  console.log(descriptor);
-  descriptor.writable = true;
-}
-
-class Airplane implements AircraftInterface {
-  constructor(public _aircraftModel: string, private pilot: string) {}
-  @StaticMethodDecorator
-  public static seatCount(): void {
-    console.log("150 Seats");
+@FirstDecorator("First Decorator")
+class Aircraft {
+  constructor(public _aircraftModel: string, private pilot: string) {
+    console.log("Aircraft Class Instantiated");
   }
 
   public pilotName() {
@@ -40,4 +19,5 @@ class Airplane implements AircraftInterface {
     return this._aircraftModel;
   }
 }
-const airplane: AircraftInterface = new Airplane("Airbus A380", "John");
+
+const aircraft = new Aircraft("Airbus A380", "John");
