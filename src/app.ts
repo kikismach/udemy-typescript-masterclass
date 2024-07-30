@@ -1,21 +1,21 @@
-/// <reference path="validation/Validation.ts" />
-/// <reference path="validation/LettersOnlyValidator.ts" />
-/// <reference path="validation/ZipCodeValidator.ts" />
-//  there are multiple files involved, we’ll need to make sure all of the compiled code gets loaded. There are two ways of doing this.
-// Change the property outFile - to one single file to which all JS needs to be compiled to
-// Only works with the AMD and System modules and nothing else
+// Install a Live server to run this code in a web server environment
+// Becuase while fethciong modules Google Chrome treats it as as Cross Origin Request
+// And hence will give a CORS error
+// If you do not use .js extensions while importing the code will not work in your browser
+// will throw error because browser will only see filename without extension and get a 404 error
+import { LettersOnlyValidator } from "./validation/LettersOnlyValidator.js";
+import { StringValidator } from "./validation/Validation.js";
+import { ZipCodeValidator } from "./validation/ZipCodeValidator.js";
+// Now the Output module can be ESNEXT to be compiles into one file with ESM
+// We can get rid of the outFile as well as now modules will work
+// Also in index.html you need to enable modules for this to work
 
 let values = ["Hello", "98052", "101"];
 
-// Now wherever we need to use any of the types declare above in a namespace we need
-// to qualify them with the namespace name just like you would access the property of an object
-// using the dot notation
-
-// Doing this we have now assigned a namespce to all our validation types and these names
-// now do no exist in the GLOBAL namespace, but are specific to Validation namespace
-let validators: { [value: string]: Validation.StringValidator } = {};
-validators.zipCode = new Validation.ZipCodeValidator();
-validators.letters = new Validation.LettersOnlyValidator();
+// Get rid of the Validation prefix
+let validators: { [value: string]: StringValidator } = {};
+validators.zipCode = new ZipCodeValidator();
+validators.letters = new LettersOnlyValidator();
 
 console.log(validators);
 
