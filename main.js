@@ -45,5 +45,7 @@ User.prototype.addPoint = function () {
 };
 
 const user = new User("John", "john@email.com");
+user.addPoint();
+user.prototype.addPoint();
 
 console.log(user);
