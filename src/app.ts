@@ -35,9 +35,20 @@ function AircraftManufacturer(manufacturer: Manufacturers) {
 
 @AircraftManufacturer(Manufacturers.airbus)
 class Airplane implements AircraftInterface {
-  constructor(public _aircraftModel: string, private pilot: string) {
-    console.log("Aircraft Class Instantiated");
+  constructor(public _aircraftModel: string, private pilot: string) {}
+
+  public pilotName() {
+    console.log(this.pilot);
   }
+
+  public get aircraftModel() {
+    return this._aircraftModel;
+  }
+}
+
+@AircraftManufacturer(Manufacturers.boeing)
+class Helicopter implements AircraftInterface {
+  constructor(public _aircraftModel: string, private pilot: string) {}
 
   public pilotName() {
     console.log(this.pilot);
@@ -50,6 +61,9 @@ class Airplane implements AircraftInterface {
 
 const airplane: AircraftInterface = new Airplane("Airbus A380", "John");
 
-console.log(airplane.manufacturer);
+const helicopter: AircraftInterface = new Helicopter("H380", "Mark");
+
+console.log(airplane);
+console.log(helicopter);
 
 airplane.airbusMethod ? airplane.airbusMethod() : console.log("Method Does not Exist");
