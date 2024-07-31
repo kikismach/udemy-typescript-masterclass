@@ -1,13 +1,19 @@
-// Attempt to login using the global AuthService
-if (AuthService.login("user", "password123")) {
-  console.log("User is logged in:", AuthService.currentUser);
-} else {
-  console.log("Failed to log in.");
+function first() {
+  console.log("first(): factory evaluated");
+  return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+    console.log("first(): called");
+  };
 }
 
-// Check if the user is logged in
-if (AuthService.isLoggedIn()) {
-  console.log("User is currently logged in.");
-} else {
-  console.log("No user is currently logged in.");
+function second() {
+  console.log("second(): factory evaluated");
+  return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+    console.log("second(): called");
+  };
+}
+
+class ExampleClass {
+  @first()
+  @second()
+  method() {}
 }
