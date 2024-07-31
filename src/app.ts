@@ -1,11 +1,6 @@
-import { User } from "./user.js";
+// app.ts
+import { AdminUser } from "./user.js";
 
-const newUser: User.UserProfile = User.createUser(1, "John Doe");
-const updatedUser: User.UserProfile = User.updateUser(1, {
-  id: 1,
-  name: "Johnny Doe",
-  status: "active",
-});
-
-console.log(newUser);
-console.log(updatedUser);
+const userAdmin = new AdminUser();
+userAdmin.createUser("Bob");
+userAdmin.showGreeting(); // Outputs: "Very special greetings to our VIP, Bob!"

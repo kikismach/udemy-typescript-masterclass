@@ -1,9 +1,25 @@
-export const User = {
-  createUser: (id, name) => {
-    return { id, name, status: "active" };
-  },
+// user.js
+export class User {
+  constructor(greeting) {
+    this.greeting = greeting;
+  }
 
-  updateUser: (id, user) => {
-    return { ...user, id };
-  },
-};
+  createUser(name) {
+    this.user = { name: name, greeting: this.greeting };
+    return this.user;
+  }
+
+  showGreeting() {
+    console.log(`${this.greeting}, ${this.user.name}!`);
+  }
+}
+
+export class AdminUser extends User {
+  constructor() {
+    super("Greetings to admin");
+  }
+
+  showGreeting() {
+    console.log(`${this.greeting}, ${this.user.name}!`);
+  }
+}

@@ -1,10 +1,13 @@
-export namespace User {
-  interface UserProfile {
-    id: number;
-    name: string;
-    status: "active" | "inactive";
-  }
+export declare class User {
+  greeting: string;
+  user: { name: string; greeting: string };
 
-  function createUser(id: number, name: string): UserProfile;
-  function updateUser(id: number, user: UserProfile): UserProfile;
+  constructor(greeting: string);
+  createUser(name: string): { name: string; greeting: string };
+  showGreeting(): void;
+}
+
+export declare class AdminUser extends User {
+  constructor();
+  showGreeting(): void;
 }
