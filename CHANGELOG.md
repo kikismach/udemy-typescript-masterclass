@@ -1,6 +1,67 @@
 # Changelog - TypeScript Masterclass Course - From Beginner To Advanced
 
-All notable changes to this course will be documented in this file from 18 July, 2024 onwards.
+All notable changes to this course will be documented in this file from **18 July, 2024** onwards.
+
+## [1.2.0] - 2024-08-05
+
+> [!IMPORTANT]
+> TypeScript Version - 5.5.5
+> Update Date: 5 August, 2024
+
+With this version all the lectures on TypeScript have been made complient to **TypeScript version** - [5.5.5]. This update focuses on following improvements:
+
+- Move towards making the course fully compliant towards the most recent version of TypeScript.
+- Add new lectures for most recent version of TypeScript.
+- Restructure the lectures and course sections for more videos and concepts for an in-depth coverage of each topic.
+- Update the quality of video and audio.
+- Better presentations for delivery of concepts.
+- Deprecate lectures that do not adhere to newer standards.
+
+### Added
+
+The following sections and lectures have been added or updated in this update of the course.
+
+#### Classes In TypeScript
+
+- What Are Classes
+- Running TypeScript In Browser
+- Creating First Class And Instance
+- Constructor Function
+- this Keyword
+- Classes as Types
+- Optional And Readonly Fields
+- Inheritance With Classes
+- super Method
+- Practice: Classes Exercise 1
+- Solution: Classes Exercise 1
+- Access Modifiers
+- public Members
+- protected Members
+- private Members
+- Which Access Modifier to Use?
+- Overriding Methods In Child Classes
+- Shorthand For Constructor
+- More Control Over Classes
+- Using Mutators - Setters
+- Using Accessors - Getters
+- Static Members
+- Understanding Static Blocks
+- Generics With Classes
+- Generics Use Case
+- Concrete Implementation With User Type
+- Intro To Mixins
+- Composing New Classes With Mixins
+- Practice: Classes Exercise 2
+- Solution: Classes Exercise 2
+
+#### Decorators
+
+Mad decorators section compliant with TypeScript version **TypeScript version** - [5.5.5] and added following new lectures while updated all the previous lectures.
+
+- Introduction to Decorators With Presentation
+- Decorator Composition and Evaluation
+
+---
 
 ## [1.1.0] - 2024-07-18
 
