@@ -1,35 +1,15 @@
-interface StringValidator {
-  isAcceptable(key: string): boolean;
-}
-let lettersRegexp = /^[A-Za-z]+$/;
-let numberRegexp = /^[0-9]+$/;
-
-class LettersOnlyValidator implements StringValidator {
-  isAcceptable(value: string) {
-    return lettersRegexp.test(value);
-  }
+export function add(a: number, b: number): number {
+  return a + b;
 }
 
-class ZipCodeValidator implements StringValidator {
-  isAcceptable(value: string) {
-    return value.length === 5 && numberRegexp.test(value);
-  }
+export function subtract(a: number, b: number): number {
+  return a - b;
 }
 
-// Sample values to validate
-let values = ["Hello", "98052", "101"];
+export function add(a: string, b: string): string {
+  return a + b;
+}
 
-// Creating new validators
-let validators: { [value: string]: StringValidator } = {};
-validators.zipCode = new ZipCodeValidator();
-validators.letters = new LettersOnlyValidator();
-
-console.log(validators);
-
-// Show whether each string passed each validator
-for (let each of values) {
-  for (let name in validators) {
-    let isMatch = validators[name].isAcceptable(each);
-    console.log(`'${each}' ${isMatch ? "matches" : "does not match"} '${name}'.`);
-  }
+export function subtract(a: string, b: string): string {
+  return a.replace(b, "");
 }
