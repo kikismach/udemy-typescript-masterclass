@@ -1,5 +1,5 @@
 import AddOutput from "./AddOutput.interface";
-import { CommonUtils } from "./common-utils";
+import { CommonUtils } from "./common-utils.js";
 
 export class MathUtils {
   static add(a: number, b: number): AddOutput {
