@@ -2,6 +2,42 @@
 
 All notable changes to this course will be documented in this file from **18 July, 2024** onwards.
 
+## [1.3.0] - 2024-09-05
+
+> [!IMPORTANT]
+> TypeScript Version - 5.5.5
+> Update Date: 5 September, 2024
+
+### Added
+
+The following sections and lectures have been added or updated in this update of the course.
+
+### Added
+
+1. **Namespaces and Modules**:
+
+   - Introduction to Namespaces: Learn the foundational concepts of namespaces in TypeScript.
+   - Starting With Namespaces: Practical applications and coding with namespaces.
+   - Namespaces In Multiple Files: Organize large codebases effectively using namespaces across multiple files.
+   - Working With ESM Modules: Integration of ESM modules with TypeScript.
+   - Mixed Module Interoperability: Ensure seamless interaction between CommonJS and ESM modules in your projects.
+
+2. **Declaration Files**:
+   - Transitioning JavaScript to TypeScript: Convert JavaScript code to TypeScript with essential techniques.
+   - First Declaration File: Create and utilize your first TypeScript declaration file.
+   - Reusable Types With Interfaces: Enhance code reusability and maintainability using interfaces.
+   - Function Overloads With Declaration Files: Learn to use function overloads to enrich function capabilities.
+   - Using Namespaces In Declaration Files: Optimize organization by using namespaces within declaration files.
+   - Declaration For Classes: Define class shapes with TypeScript declaration files.
+   - Ambient Declarations: Understand and apply ambient declarations in your projects.
+   - Using @Types Packages: Manage external type declarations seamlessly.
+
+---
+
+# Changelog - TypeScript Masterclass Course - From Beginner To Advanced
+
+All notable changes to this course will be documented in this file from **18 July, 2024** onwards.
+
 ## [1.2.0] - 2024-08-05
 
 > [!IMPORTANT]
