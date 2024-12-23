@@ -1,0 +1,17 @@
+{
+  "name": "test01",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsc -b",
+    "start:dev": "tsc -w",
+    "ts:version": "tsc -v",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}
