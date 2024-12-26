@@ -1,0 +1,6 @@
+# API
+PORT=3200
+# Database
+MARIADB_USER=root
+MARIADB_PWD=mach
+MARIADB_DB=todo

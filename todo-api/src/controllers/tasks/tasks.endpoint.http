@@ -1,0 +1,27 @@
+### File to use with extension httpYac it is like POSTMAN
+
+### Greeting
+GET http://localhost:3200/tasks/greeting
+Content-Type: application/json
+
+### Fetch all Tasks
+GET http://localhost:3200/tasks
+Content-Type: application/json
+
+### Create new Task
+POST http://localhost:3200/tasks    
+Content-Type: application/json
+{
+    "title": "Mololor sit amet",
+    "description": "Lorem ipsum dolor sit amet",
+    "duedate": "2025-01-01T12:00:00",
+    "status": "todo",
+    "priority": "normal"
+}
+
+### Update status Task
+PUT http://localhost:3200/tasks/1672f2a0-2c34-486b-9687-02cc22da6455/status
+Content-Type: application/json
+{
+    "status": "inProgress"
+}
