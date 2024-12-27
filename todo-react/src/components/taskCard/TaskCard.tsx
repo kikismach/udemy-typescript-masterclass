@@ -7,15 +7,16 @@ import { emitCorrectBorderColor } from './helpers/EmitCorrectBorderColor';
 import { ITaskCard } from './interfaces/ITaskCard';
 import { Status } from '../form/enums/Status';
 import { Priority } from '../form/enums/Priority';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 
 export const TaskCard: FC<ITaskCard> = (props): ReactElement => {
   const {
-    priority = Priority.normal,
-    // status = Status.completed,
+    id = '',
     title = 'Test Title',
-    date = new Date(),
     description = 'Lorem ipsum dolor sit amet',
+    date = new Date(),
+    status = Status.todo,
+    priority = Priority.normal,
     onChanged,
     onComplete,
   } = props;
@@ -37,18 +38,23 @@ export const TaskCard: FC<ITaskCard> = (props): ReactElement => {
     >
       <TaskHeader title={title} date={date}></TaskHeader>
       <TaskContent description={description}></TaskContent>
-      <TaskFooter onChanged={onChanged} onComplete={onComplete}></TaskFooter>
+      <TaskFooter
+        id={id}
+        status={status}
+        onChanged={onChanged}
+        onComplete={onComplete}
+      ></TaskFooter>
     </Box>
   );
 };
 
-TaskCard.propTypes = {
-  id: PropTypes.string,
-  priority: PropTypes.oneOf([Priority.high, Priority.normal, Priority.low]),
-  status: PropTypes.oneOf([Status.todo, Status.inProgress, Status.completed]),
-  title: PropTypes.string,
-  date: PropTypes.instanceOf(Date),
-  description: PropTypes.string,
-  onChanged: PropTypes.func,
-  onComplete: PropTypes.func,
-};
+// TaskCard.propTypes = {
+//   id: PropTypes.string.isRequired,
+//   priority: PropTypes.oneOf([Priority.high, Priority.normal, Priority.low]),
+//   status: PropTypes.oneOf([Status.todo, Status.inProgress, Status.completed]),
+//   title: PropTypes.string,
+//   date: PropTypes.instanceOf(Date),
+//   description: PropTypes.string,
+//   onChanged: PropTypes.func,
+//   onComplete: PropTypes.func,
+// };

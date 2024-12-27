@@ -5,7 +5,7 @@ import { ITaskFooter } from './ITaskFooter';
 import { ITaskHeader } from './ITaskHeader';
 
 export interface ITaskCard extends ITaskHeader, ITaskContent, ITaskFooter {
-  id?: string;
+  id: string;
   priority?: Priority;
   status?: Status;
 }

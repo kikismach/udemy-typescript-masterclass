@@ -35,7 +35,7 @@ export const Profile: FC<IProfile> = (props): ReactElement => {
         Welcome, {name}
       </Typography>
       <Typography variant="body1" color="text.primary">
-        This is your personal taksks manager
+        This is your personal task manager
       </Typography>
     </Box>
   );

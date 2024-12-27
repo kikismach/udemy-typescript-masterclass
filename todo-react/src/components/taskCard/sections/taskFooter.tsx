@@ -1,14 +1,20 @@
 import { Button, FormControlLabel, Grid2, Switch } from '@mui/material';
-import { FC, ReactElement } from 'react';
+import { FC, ReactElement, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { ITaskFooter } from '../interfaces/ITaskFooter';
 import { DoneOutline } from '@mui/icons-material';
+import { Status } from '../../form/enums/Status';
 
 export const TaskFooter: FC<ITaskFooter> = (props): ReactElement => {
   const {
+    status = Status.todo,
     onChanged = (e) => console.error(e),
     onComplete = (e) => console.error(e),
   } = props;
+
+  const isChecked = useMemo(() => {
+    return status === Status.inProgress;
+  }, [status]);
 
   return (
     <Grid2
@@ -20,7 +26,9 @@ export const TaskFooter: FC<ITaskFooter> = (props): ReactElement => {
       wrap="nowrap"
     >
       <FormControlLabel
-        control={<Switch onChange={onChanged} color="warning" />}
+        control={
+          <Switch checked={isChecked} onChange={onChanged} color="warning" />
+        }
         label="In Progress"
       />
       <Button
@@ -40,6 +48,8 @@ export const TaskFooter: FC<ITaskFooter> = (props): ReactElement => {
 };
 
 TaskFooter.propTypes = {
+  id: PropTypes.string.isRequired,
+  status: PropTypes.oneOf([Status.todo, Status.inProgress, Status.completed]),
   onChanged: PropTypes.func,
   onComplete: PropTypes.func,
 };

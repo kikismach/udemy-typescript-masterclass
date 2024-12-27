@@ -2,7 +2,7 @@ import { Box, Chip, Grid2, Typography } from '@mui/material';
 import { FC, ReactElement } from 'react';
 import { ITaskHeader } from '../interfaces/ITaskHeader';
 import { format } from 'date-fns';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 
 export const TaskHeader: FC<ITaskHeader> = (props): ReactElement => {
   const { title = 'Default Title', date = new Date() } = props;
@@ -25,7 +25,7 @@ export const TaskHeader: FC<ITaskHeader> = (props): ReactElement => {
   );
 };
 
-TaskHeader.propTypes = {
-  title: PropTypes.string,
-  date: PropTypes.instanceOf(Date),
-};
+// TaskHeader.propTypes = {
+//   title: PropTypes.string,
+//   date: PropTypes.instanceOf(Date),
+// };
