@@ -31,17 +31,11 @@ export default function useTask(): IUseTask {
 
   const sortData = (data: Task[]) => {
     try {
-      console.log('sortData');
       const sortedData = data.sort(
         (a, b) => new Date(a.duedate).getTime() - new Date(b.duedate).getTime(),
       );
-      console.log(sortedData);
       return sortedData;
     } catch (err) {
-      console.log(err);
-      console.log(typeof data[0].duedate);
-      console.log(data[0].duedate);
-      console.log(data[0].duedate.getTime());
       return data;
     }
   };
