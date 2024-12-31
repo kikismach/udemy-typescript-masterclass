@@ -1,0 +1,41 @@
+version: "3.0"
+services:
+  todo-db:
+    container_name: todo-db
+    image: mariadb:11.6
+    environment:
+      MARIADB_ROOT_PASSWORD: mach
+      MARIADB_DATABASE: todo
+    ports:
+      - 3306:3306
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      start_period: 10s
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  todo-api:
+    container_name: todo-api
+    build:
+      context: ./todo-api
+      dockerfile: Dockerfile
+    image: kikismach/todo-api
+    ports:
+      - 3200:3200
+    env_file:
+      - ./todo-api/.env.docker
+    depends_on:
+      todo-db:
+        condition: service_healthy
+
+  todo-app:
+    container_name: todo-app
+    build:
+      context: ./todo-react
+      dockerfile: Dockerfile
+    image: kikismach/todo-app
+    ports:
+      - 8080:3000
+    depends_on:
+      - todo-api

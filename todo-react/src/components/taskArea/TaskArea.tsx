@@ -124,7 +124,7 @@ export const TaskArea: FC = (): ReactElement => {
                   onChanged={(_, checked) => {
                     handleOnChange(item.id, checked);
                   }}
-                  onComplete={(e) => {
+                  onComplete={(_) => {
                     handleOnComplete(item.id);
                   }}
                 />

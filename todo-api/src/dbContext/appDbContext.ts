@@ -7,8 +7,8 @@ class DbContext {
   constructor() {
     this.AppDataSource = new DataSource({
       type: 'mariadb',
-      host: 'localhost',
       port: 3306,
+      host: process.env.MARIADB_HOST,
       username: process.env.MARIADB_USER,
       password: process.env.MARIADB_PWD,
       database: process.env.MARIADB_DB,

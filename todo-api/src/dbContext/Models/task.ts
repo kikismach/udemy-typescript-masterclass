@@ -15,7 +15,7 @@ export class Task {
   @CreateDateColumn({
     type: 'timestamp',
     nullable: false,
-    default: 'CURRENT_TIMESTAMP(6)',
+    default: () => 'CURRENT_TIMESTAMP(6)',
   })
   createdAt: Date;
 
